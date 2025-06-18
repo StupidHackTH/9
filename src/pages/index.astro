@@ -1,12 +1,13 @@
 ---
 import logotype from "../assets/logotype.svg?url";
 import manorah from "../assets/manorah_cappuccina_blur.webp?url";
+import heroBg from "../assets/hero-bg.webp?url";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <main class="min-h-screen bg-black">
-    <section class="container mx-auto px-4 py-16">
+  <main class="bg-black">
+    <section class="px-4 pt-16 relative bg-cover bg-center" style={`background-image: url(${heroBg})`}>
       <div class="flex flex-col justify-center items-center relative">
         <img
           src={logotype}
@@ -18,6 +19,10 @@ import Layout from "../layouts/Layout.astro";
           alt="Manorah Cappuccina Blur"
           class="w-[640px] rounded-lg shadow-lg -mt-20 z-20 relative"
         />
+      </div>
+      <div
+        class="absolute inset-x-0 bottom-0 h-[480px] bg-gradient-to-t from-[#012976] to-transparent pointer-events-none z-30"
+      >
       </div>
     </section>
   </main>
