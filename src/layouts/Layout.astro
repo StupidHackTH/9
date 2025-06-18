@@ -1,5 +1,5 @@
 ---
-import "./src/styles/global.css";
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -14,13 +14,14 @@ import "./src/styles/global.css";
   <body>
     <slot />
   </body>
-
-  <style>
+  <style is:global>
     html,
     body {
       margin: 0;
       width: 100%;
       height: 100%;
+      background-color: black;
+      color: white;
     }
   </style>
 </html>
