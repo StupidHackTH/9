@@ -1,0 +1,290 @@
+
+---
+// EventSection.astro
+// Sections 3-9 from WEBSITE_DRAFT.md, styled in reference to the attached image (bold, playful, large text, colored backgrounds, image grid, call-to-action)
+---
+
+<section class="event-section">
+  {/* Section 3: Event Information */}
+  <div class="venue-block">
+    <h2 class="section-title orange-bg">Venue</h2>
+    <div class="venue-details">
+      <div>
+        <strong>GameDevHub Bangkok</strong><br />
+        BB Building 16th Floor, Unit 1605-1609<br />
+        54 Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110<br />
+        <a href="https://www.gamedevhub.co.th/" target="_blank">Website</a> | <a href="https://maps.app.goo.gl/kJ9qo89T36Jc4MMs6" target="_blank">Google Maps</a>
+      </div>
+      <div class="transit-info">
+        <ul>
+          <li><b>9 min walk</b> from MRT Phetchaburi (650m)</li>
+          <li><b>10 min walk</b> from MRT Sukhumvit (700m)</li>
+          <li><b>14 min walk</b> from BTS Asok (1km)</li>
+          <li><b>16 min walk</b> from ARL Makkasan (1km)</li>
+        </ul>
+        <p class="note">Asok Montri Rd has heavy traffic jams - public transit strongly recommended over driving</p>
+      </div>
+    </div>
+  </div>
+
+  {/* Section 4: Registration */}
+  <div class="registration-block pink-bg">
+    <h2 class="section-title">Registration</h2>
+    <p class="tickets">Tickets Coming Soon!<br />
+      <b>Platform:</b> Eventpop<br />
+      <b>Release Strategy:</b> Themed batches, creative unlocks, CTFs, quizzes, and more!<br />
+      <b>Cost:</b> FREE<br />
+      <b>Deposit:</b> Some tickets may require ฿300 refundable deposit
+    </p>
+    <p>Follow our <a href="https://www.facebook.com/creatorsgarten" target="_blank">Facebook page</a> for ticket release announcements.</p>
+    <ul class="team-info">
+      <li>Some tickets are for team applications</li>
+      <li>Some tickets are individual (team formation at the event)</li>
+    </ul>
+  </div>
+
+  {/* Section 5: Sponsorship & Funding Goals */}
+  <div class="sponsor-block orange-bg">
+    <h2 class="section-title">Sponsorship & Funding</h2>
+    <div class="funding-milestones">
+      <div><b>฿60,000</b> → Basic event 🎯</div>
+      <div><b>฿90,000</b> → Food upgrades & prizes 🎯</div>
+      <div><b>฿120,000</b> → More prizes & swag 🎯</div>
+    </div>
+    <div class="funding-progress">
+      <span class="progress">฿0 raised</span> of ฿120,000 goal
+    </div>
+    <div class="sponsor-types">
+      <div><b>Corporate Sponsorship:</b> ฿5,555.55+ (logo placement & benefits)</div>
+      <div><b>Individual Sponsorship:</b> ฿555.55+ (name on website)</div>
+      <div><b>In-Kind Sponsorship:</b> Contact us for details</div>
+    </div>
+    <a href="https://creatorsgarten.org/wiki/Sponsorship/sht9" target="_blank" class="sponsor-link">Full sponsorship details</a>
+  </div>
+
+  {/* Section 6: Schedule */}
+  <div class="schedule-block">
+    <h2 class="section-title pink-bg">Schedule</h2>
+    <div class="schedule-details">
+      <div class="schedule-day">
+        <b>Saturday, July 26</b>
+        <ul>
+          <li>Morning: Ice-breaking & team formation</li>
+          <li>Afternoon + Evening: Hacking time begins!</li>
+          <li>Overnight: Keep hacking (bring sleeping gear!)</li>
+        </ul>
+      </div>
+      <div class="schedule-day">
+        <b>Sunday, July 27</b>
+        <ul>
+          <li>Afternoon: Project pitching & awards</li>
+          <li>6:00 PM: Event ends</li>
+        </ul>
+      </div>
+      <p class="note">*Detailed schedule with specific times will be announced closer to the event.*</p>
+    </div>
+  </div>
+
+  {/* Section 7: What to Bring & Guidelines */}
+  <div class="guidelines-block orange-bg">
+    <h2 class="section-title">What to Bring & Guidelines</h2>
+    <ul class="essentials">
+      <li><b>Laptop</b> and chargers</li>
+      <li><b>Sleeping gear</b> (pillows, blankets, etc.)</li>
+      <li><b>Your creativity!</b></li>
+    </ul>
+    <div class="code-of-conduct">
+      <div class="allowed">
+        <b>Allowed & Recommended:</b>
+        <ul><li>Make stupid shit ✨</li></ul>
+      </div>
+      <div class="not-allowed">
+        <b>Not Allowed:</b>
+        <ul>
+          <li>Racist/sexist/discriminatory content</li>
+          <li>Harassment or insulting other participants</li>
+          <li>Illegal activities</li>
+        </ul>
+      </div>
+      <div class="notes">
+        <b>Please Note:</b>
+        <ul>
+          <li>Mature content allowed, but all ages welcome (be considerate)</li>
+          <li>We reserve the right to remove anyone who endangers others or acts inappropriately</li>
+          <li>Photography will take place during the event</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {/* Section 8: Sponsors (Hidden Until Sponsors Confirmed) */}
+  <div class="sponsors-block" style="display:none">
+    <h2 class="section-title">Our Amazing Sponsors</h2>
+    <div class="sponsor-logos-grid">{/* Sponsor logos here */}</div>
+    <h3>Special Thanks</h3>
+    <div class="individual-sponsors">{/* Individual sponsors here */}</div>
+  </div>
+
+  {/* Section 9: Call-to-Action */}
+  <div class="cta-block pink-bg">
+    <h2 class="section-title">Ready to Join?</h2>
+    <ol class="cta-list">
+      <li><b>Follow</b> our <a href="https://www.facebook.com/creatorsgarten" target="_blank">Facebook page</a> for ticket updates</li>
+      <li><b>Help us</b> reach our funding goals - become a sponsor!</li>
+    </ol>
+    <div class="questions">
+      <b>Questions?</b> Contact us through our <a href="https://www.facebook.com/creatorsgarten" target="_blank">Facebook page</a>
+    </div>
+    <div class="event-tagline">Stupido Hackettino ครั้งที่ ๙ - Where unnecessary becomes unforgettable! 🚀</div>
+  </div>
+</section>
+
+<style>
+.event-section {
+  font-family: 'Inter', 'Arial', sans-serif;
+  background: #fffbe9;
+  color: #222;
+  padding: 0;
+}
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1.2rem 0;
+}
+.orange-bg {
+  background: #ff6a00;
+  color: #fff;
+}
+.pink-bg {
+  background: #ffe3f0;
+  color: #d9006e;
+}
+.venue-block, .registration-block, .sponsor-block, .schedule-block, .guidelines-block, .cta-block {
+  margin: 0 0 2.5rem 0;
+  padding: 2.5rem 1.5rem;
+  border-radius: 2rem;
+  box-shadow: 0 2px 16px 0 #0001;
+}
+.venue-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.venue-details > div {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+.transit-info ul {
+  margin: 0 0 0.5rem 0;
+  padding-left: 1.2rem;
+}
+.note {
+  font-size: 1rem;
+  color: #d9006e;
+  margin-top: 0.5rem;
+}
+.tickets {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.team-info {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.2rem;
+}
+.funding-milestones {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.funding-progress {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.progress {
+  font-weight: bold;
+  color: #d9006e;
+}
+.sponsor-types > div {
+  margin-bottom: 0.5rem;
+}
+.sponsor-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #fff;
+  background: #d9006e;
+  padding: 0.5rem 1.2rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.sponsor-link:hover {
+  background: #ff6a00;
+}
+.schedule-details {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.schedule-day {
+  min-width: 220px;
+  font-size: 1.1rem;
+}
+.essentials {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+.code-of-conduct {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1rem;
+}
+.code-of-conduct > div {
+  min-width: 220px;
+}
+.cta-list {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.questions {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.event-tagline {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #ff6a00;
+}
+@media (max-width: 700px) {
+  .venue-details, .schedule-details, .essentials, .code-of-conduct {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .venue-block, .registration-block, .sponsor-block, .schedule-block, .guidelines-block, .cta-block {
+    padding: 1.2rem 0.5rem;
+    border-radius: 1rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    padding: 0.7rem 0;
+  }
+}
+</style>

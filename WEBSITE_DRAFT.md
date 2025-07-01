@@ -5,37 +5,12 @@
 **Stupido Hackettino #9** - July 26-27, 2025 🚀
 A weekend hackathon for creating wonderfully useless but wildly creative projects!
 
-📅 **When**: Saturday 9 AM → Sunday 6 PM  
-📍 **Where**: GameDevHub Bangkok  
-🎟️ **Tickets**: Coming soon via Eventpop (FREE!)  
-👥 **Who**: All ages & skill levels welcome (max 80 people)
-
----
-
-## Section 2: Event Information
-
-### Event Details
-- **Event**: Stupido Hackettino ครั้งที่ ๙
-- **Date**: July 26-27, 2025 (Saturday-Sunday)  
-- **Time**: 9:00 AM Saturday to 6:00 PM Sunday
+- **When**: Saturday 9 AM → Sunday 6 PM  
+- **Where**: GameDevHub Bangkok  
+- **Tickets**: Coming soon via Eventpop (FREE!)  
 - **Capacity**: Maximum 80 participants
 - **Ages**: All ages welcome
 - **Skill Level**: All skill levels welcome
-
-### Venue
-**GameDevHub Bangkok**
-- BB Building 16th Floor, Unit 1605-1609
-- 54 Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110
-- Website: https://www.gamedevhub.co.th/
-- Google Maps: https://maps.app.goo.gl/kJ9qo89T36Jc4MMs6
-
-### Getting There (Public Transit Recommended)
-- **9 min walk** from MRT Phetchaburi (650m)
-- **10 min walk** from MRT Sukhumvit (700m)  
-- **14 min walk** from BTS Asok (1km)
-- **16 min walk** from ARL Makkasan (1km)
-
-*Note: Asok Montri Rd has heavy traffic jams - public transit strongly recommended over driving*
 
 ---
 
@@ -58,9 +33,29 @@ This hackathon is all about building projects that are wonderfully useless but b
 **Want to see what "stupid but creative" looks like?**  
 Check out projects from previous events: https://stupid.hackathon.in.th/
 
+
 ---
 
-## Section 3: Registration
+## Section 3: Event Information
+
+### Venue
+**GameDevHub Bangkok**
+- BB Building 16th Floor, Unit 1605-1609
+- 54 Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110
+- Website: https://www.gamedevhub.co.th/
+- Google Maps: https://maps.app.goo.gl/kJ9qo89T36Jc4MMs6
+
+### Getting There (Public Transit Recommended)
+- **9 min walk** from MRT Phetchaburi (650m)
+- **10 min walk** from MRT Sukhumvit (700m)  
+- **14 min walk** from BTS Asok (1km)
+- **16 min walk** from ARL Makkasan (1km)
+
+*Note: Asok Montri Rd has heavy traffic jams - public transit strongly recommended over driving*
+
+---
+
+## Section 4: Registration
 
 ### Tickets Coming Soon!
 - **Platform**: Eventpop  
@@ -78,7 +73,7 @@ Follow our Facebook page for ticket release announcements:
 
 ---
 
-## Section 4: Sponsorship & Funding Goals
+## Section 5: Sponsorship & Funding Goals
 
 Help us make this event amazing! We're accepting sponsors to unlock better experiences for everyone.
 
@@ -99,7 +94,7 @@ Help us make this event amazing! We're accepting sponsors to unlock better exper
 
 ---
 
-## Section 5: Schedule
+## Section 6: Schedule
 
 ### Saturday, July 26
 - **Morning**: Ice-breaking & team formation
@@ -115,7 +110,7 @@ Help us make this event amazing! We're accepting sponsors to unlock better exper
 
 ---
 
-## Section 6: What to Bring & Guidelines
+## Section 7: What to Bring & Guidelines
 
 ### Essential Items
 - **Laptop** and chargers
@@ -140,7 +135,7 @@ Help us make this event amazing! We're accepting sponsors to unlock better exper
 
 ---
 
-## Section 7: Sponsors (Future Section - Hidden Until Sponsors Confirmed)
+## Section 8: Sponsors (Future Section - Hidden Until Sponsors Confirmed)
 
 ### Our Amazing Sponsors
 *This section will showcase corporate sponsor logos in a responsive grid*
@@ -150,7 +145,7 @@ Help us make this event amazing! We're accepting sponsors to unlock better exper
 
 ---
 
-## Section 8: Call-to-Action
+## Section 9: Call-to-Action
 
 ### Ready to Join?
 1. **Follow** our Facebook page for ticket updates: https://www.facebook.com/creatorsgarten
