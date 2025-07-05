@@ -1,7 +1,7 @@
-
 ---
 // EventSection.astro
 // Sections 3-9 from WEBSITE_DRAFT.md, styled in reference to the attached image (bold, playful, large text, colored backgrounds, image grid, call-to-action)
+import { getSponsorsByTier, tierNames } from "../data/sponsors";
 ---
 
 <section class="event-section">
@@ -13,7 +13,10 @@
         <strong>GameDevHub Bangkok</strong><br />
         BB Building 16th Floor, Unit 1605-1609<br />
         54 Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110<br />
-        <a href="https://www.gamedevhub.co.th/" target="_blank">Website</a> | <a href="https://maps.app.goo.gl/kJ9qo89T36Jc4MMs6" target="_blank">Google Maps</a>
+        <a href="https://www.gamedevhub.co.th/" target="_blank">Website</a> | <a
+          href="https://maps.app.goo.gl/kJ9qo89T36Jc4MMs6"
+          target="_blank">Google Maps</a
+        >
       </div>
       <div class="transit-info">
         <ul>
@@ -22,7 +25,10 @@
           <li><b>14 min walk</b> from BTS Asok (1km)</li>
           <li><b>16 min walk</b> from ARL Makkasan (1km)</li>
         </ul>
-        <p class="note">Asok Montri Rd has heavy traffic jams - public transit strongly recommended over driving</p>
+        <p class="note">
+          Asok Montri Rd has heavy traffic jams - public transit strongly
+          recommended over driving
+        </p>
       </div>
     </div>
   </div>
@@ -30,13 +36,20 @@
   {/* Section 4: Registration */}
   <div class="registration-block pink-bg">
     <h2 class="section-title">Registration</h2>
-    <p class="tickets">Tickets Coming Soon!<br />
+    <p class="tickets">
+      Tickets Coming Soon!<br />
       <b>Platform:</b> Eventpop<br />
-      <b>Release Strategy:</b> Themed batches, creative unlocks, CTFs, quizzes, and more!<br />
+      <b>Release Strategy:</b> Themed batches, creative unlocks, CTFs, quizzes, and
+      more!<br />
       <b>Cost:</b> FREE<br />
       <b>Deposit:</b> Some tickets may require ฿300 refundable deposit
     </p>
-    <p>Follow our <a href="https://www.facebook.com/creatorsgarten" target="_blank">Facebook page</a> for ticket release announcements.</p>
+    <p>
+      Follow our <a
+        href="https://www.facebook.com/creatorsgarten"
+        target="_blank">Facebook page</a
+      > for ticket release announcements.
+    </p>
     <ul class="team-info">
       <li>Some tickets are for team applications</li>
       <li>Some tickets are individual (team formation at the event)</li>
@@ -52,14 +65,18 @@
       <div><b>฿120,000</b> → More prizes & swag 🎯</div>
     </div>
     <div class="funding-progress">
-      <span class="progress">฿0 raised</span> of ฿120,000 goal
+      <span class="progress">฿52,400 raised</span> of ฿120,000 goal
     </div>
     <div class="sponsor-types">
-      <div><b>Corporate Sponsorship:</b> ฿5,555.55+ (logo placement & benefits)</div>
+      <div>
+        <b>Corporate Sponsorship:</b> ฿5,555.55+ (logo placement & benefits)
+      </div>
       <div><b>Individual Sponsorship:</b> ฿555.55+ (name on website)</div>
       <div><b>In-Kind Sponsorship:</b> Contact us for details</div>
     </div>
-    <a href="https://creatorsgarten.org/wiki/Sponsorship/sht9" target="_blank" class="sponsor-link">Full sponsorship details</a>
+    <a href="https://grtn.org/e/sht9/spon" target="_blank" class="sponsor-link"
+      >Full sponsorship details</a
+    >
   </div>
 
   {/* Section 6: Schedule */}
@@ -81,7 +98,10 @@
           <li>6:00 PM: Event ends</li>
         </ul>
       </div>
-      <p class="note">*Detailed schedule with specific times will be announced closer to the event.*</p>
+      <p class="note">
+        *Detailed schedule with specific times will be announced closer to the
+        event.*
+      </p>
     </div>
   </div>
 
@@ -110,181 +130,401 @@
         <b>Please Note:</b>
         <ul>
           <li>Mature content allowed, but all ages welcome (be considerate)</li>
-          <li>We reserve the right to remove anyone who endangers others or acts inappropriately</li>
+          <li>
+            We reserve the right to remove anyone who endangers others or acts
+            inappropriately
+          </li>
           <li>Photography will take place during the event</li>
         </ul>
       </div>
     </div>
   </div>
 
-  {/* Section 8: Sponsors (Hidden Until Sponsors Confirmed) */}
-  <div class="sponsors-block" style="display:none">
-    <h2 class="section-title">Our Amazing Sponsors</h2>
-    <div class="sponsor-logos-grid">{/* Sponsor logos here */}</div>
-    <h3>Special Thanks</h3>
-    <div class="individual-sponsors">{/* Individual sponsors here */}</div>
+  {/* Section 8: Sponsors */}
+  <div class="bg-orange-500 text-white rounded-3xl p-10 mb-10 shadow-md">
+    <h2 class="text-4xl font-black uppercase text-center mb-8 tracking-wide">
+      ผู้อุปถัมภ์แห่งความเพี้ยน
+    </h2>
+
+    {/* Tier 3: เจ้าพระยามหาเพี้ยนบันลือโลก */}
+    {
+      getSponsorsByTier("tier3").length > 0 && (
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-center mb-4 text-white">
+            {tierNames.tier3}
+          </h3>
+          <div class="flex flex-wrap gap-6 justify-center items-start">
+            {getSponsorsByTier("tier3").map((sponsor) => (
+              <div
+                class={`flex flex-col items-center bg-white/10 p-4 rounded-xl transition-transform hover:-translate-y-1 ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-xs`}
+              >
+                {sponsor.url ? (
+                  <a
+                    href={sponsor.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      class="w-full h-auto max-w-64 rounded-lg mb-3"
+                    />
+                  </a>
+                ) : (
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    class="w-full h-auto max-w-64 rounded-lg mb-3"
+                  />
+                )}
+                {sponsor.message && (
+                  <div class="relative bg-white rounded-2xl px-4 py-3 text-gray-800 text-sm w-72 mt-2">
+                    {/* Speech bubble tail pointing up to logo */}
+                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
+                    <p class="text-center leading-relaxed">{sponsor.message}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    {/* Tier 2: เสนาบดีผู้มากเมตตา */}
+    {
+      getSponsorsByTier("tier2").length > 0 && (
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-center mb-4 text-white">
+            {tierNames.tier2}
+          </h3>
+          <div class="flex flex-wrap gap-6 justify-center items-start">
+            {getSponsorsByTier("tier2").map((sponsor) => (
+              <div
+                class={`flex flex-col items-center bg-white/10 p-4 rounded-xl transition-transform hover:-translate-y-1 ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-60`}
+              >
+                {sponsor.url ? (
+                  <a
+                    href={sponsor.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      class="w-full h-auto max-w-56 rounded-lg mb-3"
+                    />
+                  </a>
+                ) : (
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    class="w-full h-auto max-w-56 rounded-lg mb-3"
+                  />
+                )}
+                {sponsor.message && (
+                  <div class="relative bg-white rounded-2xl px-4 py-3 text-gray-800 text-sm w-64 mt-2">
+                    {/* Speech bubble tail pointing up to logo */}
+                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
+                    <p class="text-center leading-relaxed">{sponsor.message}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    {/* Tier 1: ผู้อุปถัมภ์รุ่นเยาว์ */}
+    {
+      getSponsorsByTier("tier1").length > 0 && (
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-center mb-4 text-white">
+            {tierNames.tier1}
+          </h3>
+          <div class="flex flex-wrap gap-6 justify-center items-start">
+            {getSponsorsByTier("tier1").map((sponsor) => (
+              <div
+                class={`flex flex-col items-center bg-white/10 p-4 rounded-xl transition-transform hover:-translate-y-1 ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-52`}
+              >
+                {sponsor.url ? (
+                  <a
+                    href={sponsor.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      class="w-full h-auto max-w-32 rounded-lg mb-3"
+                    />
+                  </a>
+                ) : (
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    class="w-full h-auto max-w-32 rounded-lg mb-3"
+                  />
+                )}
+                {sponsor.message && (
+                  <div class="relative bg-white rounded-2xl px-4 py-3 text-gray-800 text-sm w-56 mt-2">
+                    {/* Speech bubble tail pointing up to logo */}
+                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
+                    <p class="text-center leading-relaxed">{sponsor.message}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    {/* Individual Sponsors */}
+    {
+      getSponsorsByTier("individual").length > 0 && (
+        <div class="border-t-2 border-white/20 pt-8 mt-8">
+          <h3 class="text-xl font-bold text-center mb-6 text-white">
+            {tierNames.individual}
+          </h3>
+          <div class="flex flex-wrap gap-6 justify-center">
+            {getSponsorsByTier("individual").map((sponsor) => (
+              <div
+                class={`flex flex-col w-64 ${sponsor.isPlaceholder ? "opacity-60" : ""}`}
+              >
+                {/* Avatar and Name */}
+                <div class="flex items-center gap-3 mb-3">
+                  <img
+                    src={`https://api.dicebear.com/9.x/notionists-neutral/svg?seed=${encodeURIComponent(sponsor.name)}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf&backgroundType=gradientLinear`}
+                    alt={sponsor.name}
+                    class="w-12 h-12 rounded-full bg-white/20 p-1"
+                  />
+                  {sponsor.url ? (
+                    <a
+                      href={sponsor.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-white font-bold text-sm hover:underline"
+                    >
+                      {sponsor.name}
+                    </a>
+                  ) : (
+                    <span class="text-white font-bold text-sm">
+                      {sponsor.name}
+                    </span>
+                  )}
+                </div>
+
+                {/* Speech Bubble */}
+                {(sponsor.message || sponsor.isPlaceholder) && (
+                  <div class="relative bg-white rounded-2xl px-4 py-3 text-gray-800 text-sm w-60">
+                    {/* Speech bubble tail - aligned with avatar (24px from left edge) */}
+                    <div class="absolute -top-2 left-4 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
+
+                    {sponsor.message ? (
+                      <p class="text-left leading-relaxed">{sponsor.message}</p>
+                    ) : (
+                      <p class="text-left text-gray-500 italic">
+                        Sponsor Us...
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
   </div>
 
   {/* Section 9: Call-to-Action */}
   <div class="cta-block pink-bg">
     <h2 class="section-title">Ready to Join?</h2>
     <ol class="cta-list">
-      <li><b>Follow</b> our <a href="https://www.facebook.com/creatorsgarten" target="_blank">Facebook page</a> for ticket updates</li>
+      <li>
+        <b>Follow</b> our <a
+          href="https://www.facebook.com/creatorsgarten"
+          target="_blank">Facebook page</a
+        > for ticket updates
+      </li>
       <li><b>Help us</b> reach our funding goals - become a sponsor!</li>
     </ol>
     <div class="questions">
-      <b>Questions?</b> Contact us through our <a href="https://www.facebook.com/creatorsgarten" target="_blank">Facebook page</a>
+      <b>Questions?</b> Contact us through our <a
+        href="https://www.facebook.com/creatorsgarten"
+        target="_blank">Facebook page</a
+      >
     </div>
-    <div class="event-tagline">Stupido Hackettino ครั้งที่ ๙ - Where unnecessary becomes unforgettable! 🚀</div>
+    <div class="event-tagline">
+      Stupido Hackettino ครั้งที่ ๙ - Where unnecessary becomes unforgettable!
+      🚀
+    </div>
   </div>
 </section>
 
 <style>
-.event-section {
-  font-family: 'Inter', 'Arial', sans-serif;
-  background: #fffbe9;
-  color: #222;
-  padding: 0;
-}
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  margin: 0 0 1.5rem 0;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 1.2rem 0;
-}
-.orange-bg {
-  background: #ff6a00;
-  color: #fff;
-}
-.pink-bg {
-  background: #ffe3f0;
-  color: #d9006e;
-}
-.venue-block, .registration-block, .sponsor-block, .schedule-block, .guidelines-block, .cta-block {
-  margin: 0 0 2.5rem 0;
-  padding: 2.5rem 1.5rem;
-  border-radius: 2rem;
-  box-shadow: 0 2px 16px 0 #0001;
-}
-.venue-details {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.venue-details > div {
-  flex: 1 1 250px;
-  min-width: 220px;
-}
-.transit-info ul {
-  margin: 0 0 0.5rem 0;
-  padding-left: 1.2rem;
-}
-.note {
-  font-size: 1rem;
-  color: #d9006e;
-  margin-top: 0.5rem;
-}
-.tickets {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-.team-info {
-  margin: 0.5rem 0 0 0;
-  padding-left: 1.2rem;
-}
-.funding-milestones {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-.funding-progress {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-.progress {
-  font-weight: bold;
-  color: #d9006e;
-}
-.sponsor-types > div {
-  margin-bottom: 0.5rem;
-}
-.sponsor-link {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #fff;
-  background: #d9006e;
-  padding: 0.5rem 1.2rem;
-  border-radius: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.sponsor-link:hover {
-  background: #ff6a00;
-}
-.schedule-details {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.schedule-day {
-  min-width: 220px;
-  font-size: 1.1rem;
-}
-.essentials {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-}
-.code-of-conduct {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 1rem;
-}
-.code-of-conduct > div {
-  min-width: 220px;
-}
-.cta-list {
-  font-size: 1.2rem;
-  margin-bottom: 1.2rem;
-}
-.questions {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-}
-.event-tagline {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 1.5rem;
-  color: #ff6a00;
-}
-@media (max-width: 700px) {
-  .venue-details, .schedule-details, .essentials, .code-of-conduct {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .venue-block, .registration-block, .sponsor-block, .schedule-block, .guidelines-block, .cta-block {
-    padding: 1.2rem 0.5rem;
-    border-radius: 1rem;
+  .event-section {
+    font-family: "Inter", "Arial", sans-serif;
+    background: #fffbe9;
+    color: #222;
+    padding: 0;
   }
   .section-title {
-    font-size: 1.5rem;
-    padding: 0.7rem 0;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1.2rem 0;
   }
-}
+  .orange-bg {
+    background: #ff6a00;
+    color: #fff;
+  }
+  .pink-bg {
+    background: #ffe3f0;
+    color: #d9006e;
+  }
+  .venue-block,
+  .registration-block,
+  .sponsor-block,
+  .schedule-block,
+  .guidelines-block,
+  .cta-block,
+  .sponsors-block {
+    margin: 0 0 2.5rem 0;
+    padding: 2.5rem 1.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 2px 16px 0 #0001;
+  }
+  .venue-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .venue-details > div {
+    flex: 1 1 250px;
+    min-width: 220px;
+  }
+  .transit-info ul {
+    margin: 0 0 0.5rem 0;
+    padding-left: 1.2rem;
+  }
+  .note {
+    font-size: 1rem;
+    color: #d9006e;
+    margin-top: 0.5rem;
+  }
+  .tickets {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .team-info {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.2rem;
+  }
+  .funding-milestones {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .funding-progress {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .progress {
+    font-weight: bold;
+    color: #d9006e;
+  }
+  .sponsor-types > div {
+    margin-bottom: 0.5rem;
+  }
+  .sponsor-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #fff;
+    background: #d9006e;
+    padding: 0.5rem 1.2rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .sponsor-link:hover {
+    background: #ff6a00;
+  }
+  .schedule-details {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .schedule-day {
+    min-width: 220px;
+    font-size: 1.1rem;
+  }
+  .essentials {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+  .code-of-conduct {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .code-of-conduct > div {
+    min-width: 220px;
+  }
+  .cta-list {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .questions {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .event-tagline {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #ff6a00;
+  }
+  @media (max-width: 700px) {
+    .venue-details,
+    .schedule-details,
+    .essentials,
+    .code-of-conduct {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .venue-block,
+    .registration-block,
+    .sponsor-block,
+    .schedule-block,
+    .guidelines-block,
+    .cta-block,
+    .sponsors-block {
+      padding: 1.2rem 0.5rem;
+      border-radius: 1rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      padding: 0.7rem 0;
+    }
+  }
 </style>
