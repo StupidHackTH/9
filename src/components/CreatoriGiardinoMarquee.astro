@@ -1,0 +1,42 @@
+---
+import creatoriGiardino from "../assets/creatori_giardino.png?url";
+---
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-631px);
+    }
+  }
+
+  .marquee-container {
+    will-change: transform;
+    animation: marquee 10s linear infinite;
+  }
+
+  .gradient-overlay {
+    background: linear-gradient(
+      90deg,
+      black 0%,
+      transparent 10%,
+      transparent 90%,
+      black 100%
+    );
+  }
+</style>
+
+<section class="w-full max-w-7xl mx-auto h-[60px] overflow-hidden bg-black relative">
+  <div class="marquee-container h-full flex items-center">
+    <img
+      src={creatoriGiardino}
+      alt="Creatori Giardino"
+      class="h-[60px] w-[3128px] object-contain max-w-none"
+    />
+  </div>
+  
+  <!-- Gradient overlays -->
+  <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
+</section>
