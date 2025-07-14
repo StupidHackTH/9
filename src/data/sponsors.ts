@@ -72,6 +72,24 @@ export const sponsors: Sponsor[] = [
 
   // Individual Sponsors: ผู้อุปถัมภ์ใจกุศล (฿555.55+)
   {
+    name: "Patt Vira",
+    logo: "",
+    url: "https://www.youtube.com/@pattvira",
+    message: "Will always support + participate in กิจกรรมสมองไหล 555",
+    tier: "individual",
+  },
+  {
+    name: "narze",
+    logo: "",
+    message: "ඞ",
+    tier: "individual",
+  },
+  {
+    name: "พันธุ์ทิพา สุขสิริสรณ์",
+    logo: "",
+    tier: "individual",
+  },
+  {
     name: "Mom's cap",
     logo: "",
     url: "https://www.facebook.com/momscap",
@@ -79,10 +97,9 @@ export const sponsors: Sponsor[] = [
     tier: "individual",
   },
   {
-    name: "Patt Vira",
+    name: "Sasarak Sutthisukon",
     logo: "",
-    url: "https://www.youtube.com/@pattvira",
-    message: "Will always support + participate in กิจกรรมสมองไหล 555",
+    message: "Let's build stupid products.",
     tier: "individual",
   },
   {
