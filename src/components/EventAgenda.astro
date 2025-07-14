@@ -5,98 +5,139 @@ import mascot2 from "../assets/mascot2.webp?url";
 
 <section class="w-full bg-black py-16">
   <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <h2 class="text-3xl md:text-5xl text-white mb-8 md:mb-12 text-left" style="font-family: 'Righteous', cursive;">
+    <h2
+      class="text-3xl md:text-5xl text-white mb-8 md:mb-12 text-left"
+      style="font-family: 'Righteous', cursive;"
+    >
       Event Agenda
     </h2>
-    
+
     <!-- Day 1 -->
     <div class="mb-8 md:mb-12">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 md:mb-8 bg-gray-800 rounded-2xl p-4 md:p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 sm:mb-0">
-          <div class="bg-blue-600 text-white px-4 py-2 md:px-6 md:py-3 rounded-xl font-bold text-base md:text-lg w-fit">
+      <div class="relative mb-6 md:mb-8">
+        <div class="flex rounded-[24px] overflow-hidden">
+          <!-- Left side - Day badge (fits content) -->
+          <div class="bg-blue-600 text-white px-4 py-4 md:px-6 md:py-6 font-bold text-base md:text-lg flex items-center">
             Day 1
           </div>
-          <div class="text-white text-lg md:text-xl font-medium">
+          <!-- Right side - Date (fills remaining space) -->
+          <div class="bg-neutral-800 text-white px-4 py-4 md:px-6 md:py-6 text-lg md:text-xl font-medium flex-1 flex items-center">
             Saturday, July 26
           </div>
         </div>
-        <img src={mascot1} alt="Mascot 1" class="w-12 h-12 md:w-16 md:h-16 object-contain self-end sm:self-auto" />
+        <!-- Mascot jutting out from top right -->
+        <img
+          src={mascot1}
+          alt="Mascot 1"
+          class="absolute -top-2 right-4 w-12 h-12 md:w-16 md:h-16 object-contain"
+        />
       </div>
-      
+
       <div class="space-y-4 md:space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-          <div class="text-white text-base md:text-lg min-w-[100px] sm:min-w-[120px] flex items-center gap-2">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0">
+          <div
+            class="text-white text-base md:text-lg min-w-[140px] sm:min-w-[160px] flex items-center gap-2"
+          >
             <span class="text-xl md:text-2xl">☁️</span>
             <span>Morning</span>
           </div>
-          <div class="bg-gray-800 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg">
+          <div
+            class="border border-neutral-700 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg"
+          >
             Ice-breaking & team formation
           </div>
         </div>
-        
-        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-          <div class="text-white text-base md:text-lg min-w-[100px] sm:min-w-[120px] flex items-center gap-2">
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0">
+          <div
+            class="text-white text-base md:text-lg min-w-[140px] sm:min-w-[160px] flex items-center gap-2"
+          >
             <span class="text-xl md:text-2xl">☀️</span>
             <span>Afternoon</span>
           </div>
-          <div class="bg-gray-800 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg">
+          <div
+            class="border border-neutral-700 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg"
+          >
             Hacking time begins!
           </div>
         </div>
-        
-        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-          <div class="text-white text-base md:text-lg min-w-[100px] sm:min-w-[120px] flex items-center gap-2">
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0">
+          <div
+            class="text-white text-base md:text-lg min-w-[140px] sm:min-w-[160px] flex items-center gap-2"
+          >
             <span class="text-xl md:text-2xl">🌙</span>
             <span>Overnight</span>
           </div>
-          <div class="bg-gray-800 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg">
+          <div
+            class="border border-neutral-700 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg"
+          >
             Keep hacking (bring sleeping gear!)
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Day 2 -->
     <div class="mb-8 md:mb-12">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 md:mb-8 bg-gray-800 rounded-2xl p-4 md:p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 sm:mb-0">
-          <div class="bg-blue-600 text-white px-4 py-2 md:px-6 md:py-3 rounded-xl font-bold text-base md:text-lg w-fit">
+      <div class="relative mb-6 md:mb-8">
+        <div class="flex rounded-[24px] overflow-hidden">
+          <!-- Left side - Day badge (fits content) -->
+          <div class="bg-blue-600 text-white px-4 py-4 md:px-6 md:py-6 font-bold text-base md:text-lg flex items-center">
             Day 2
           </div>
-          <div class="text-white text-lg md:text-xl font-medium">
+          <!-- Right side - Date (fills remaining space) -->
+          <div class="bg-neutral-800 text-white px-4 py-4 md:px-6 md:py-6 text-lg md:text-xl font-medium flex-1 flex items-center">
             Sunday, July 27
           </div>
         </div>
-        <img src={mascot2} alt="Mascot 2" class="w-12 h-12 md:w-16 md:h-16 object-contain self-end sm:self-auto" />
+        <!-- Mascot jutting out from top right -->
+        <img
+          src={mascot2}
+          alt="Mascot 2"
+          class="absolute -top-2 right-4 w-12 h-12 md:w-16 md:h-16 object-contain"
+        />
       </div>
-      
+
       <div class="space-y-4 md:space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-          <div class="text-white text-base md:text-lg min-w-[100px] sm:min-w-[120px] flex items-center gap-2">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0">
+          <div
+            class="text-white text-base md:text-lg min-w-[140px] sm:min-w-[160px] flex items-center gap-2"
+          >
             <span class="text-xl md:text-2xl">☁️</span>
             <span>Morning</span>
           </div>
-          <div class="bg-gray-800 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg">
+          <div
+            class="border border-neutral-700 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg"
+          >
             Keep hacking
           </div>
         </div>
-        
-        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-          <div class="text-white text-base md:text-lg min-w-[100px] sm:min-w-[120px] flex items-center gap-2">
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0">
+          <div
+            class="text-white text-base md:text-lg min-w-[140px] sm:min-w-[160px] flex items-center gap-2"
+          >
             <span class="text-xl md:text-2xl">☀️</span>
             <span>Afternoon</span>
           </div>
-          <div class="bg-gray-800 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg">
+          <div
+            class="border border-neutral-700 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg"
+          >
             Project pitching & awards
           </div>
         </div>
-        
-        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-          <div class="text-white text-base md:text-lg min-w-[100px] sm:min-w-[120px] flex items-center gap-2">
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0">
+          <div
+            class="text-white text-base md:text-lg min-w-[140px] sm:min-w-[160px] flex items-center gap-2"
+          >
             <span class="text-xl md:text-2xl">🎉</span>
             <span>6:00 PM</span>
           </div>
-          <div class="bg-gray-800 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg">
+          <div
+            class="border border-neutral-700 text-white px-4 py-3 md:px-6 md:py-4 rounded-xl flex-1 text-base md:text-lg"
+          >
             Event ends
           </div>
         </div>
