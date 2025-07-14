@@ -1,5 +1,7 @@
 ---
-import creatoriGiardino from "../assets/creatori_giardino.png?url";
+import creatoriGiardino from "../assets/creatori_giardino.svg?url";
+import tralaleroTralala from "../assets/tralalero_tralala.png?url";
+import tungTungTungTungTungTungTungTungTungSahur from "../assets/tung_tung_tung_tung_tung_tung_tung_tung_tung_sahur.png?url";
 ---
 
 <style>
@@ -8,7 +10,7 @@ import creatoriGiardino from "../assets/creatori_giardino.png?url";
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-631px);
+      transform: translateX(-602px);
     }
   }
 
@@ -28,15 +30,47 @@ import creatoriGiardino from "../assets/creatori_giardino.png?url";
   }
 </style>
 
-<section class="w-full max-w-7xl mx-auto h-[60px] overflow-hidden bg-black relative">
-  <div class="marquee-container h-full flex items-center">
-    <img
-      src={creatoriGiardino}
-      alt="Creatori Giardino"
-      class="h-[60px] w-[3128px] object-contain max-w-none"
-    />
+<section
+  class="w-full max-w-7xl mx-auto h-[60px] overflow-hidden bg-black relative"
+  aria-hidden="true"
+>
+  <div class="marquee-container h-full flex items-center left-0 top-0 gap-4">
+    {
+      [1, 2, 3, 4].map((x) => (
+        <Fragment>
+          <img
+            src={tungTungTungTungTungTungTungTungTungSahur}
+            alt="Tung Tung Tung Tung Tung Tung Tung Tung Sahur"
+            class="h-full object-contain"
+            width="26"
+            height="35"
+          />
+          <img
+            src={creatoriGiardino}
+            alt="Creatori Giardino"
+            class="h-full object-contain"
+            width="237"
+            height="33"
+          />
+          <img
+            src={tralaleroTralala}
+            alt="Tralalero Tralala"
+            class="h-full object-contain"
+            width="38"
+            height="32"
+          />
+          <img
+            src={creatoriGiardino}
+            alt="Creatori Giardino"
+            class="h-full object-contain"
+            width="237"
+            height="33"
+          />
+        </Fragment>
+      ))
+    }
   </div>
-  
+
   <!-- Gradient overlays -->
   <div class="absolute inset-0 gradient-overlay pointer-events-none"></div>
 </section>
