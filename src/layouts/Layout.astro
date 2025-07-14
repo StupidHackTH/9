@@ -1,6 +1,6 @@
 ---
-import "../styles/global.css";
 import Header from "../components/Header.astro";
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -11,11 +11,14 @@ import Header from "../components/Header.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=K2D:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&family=K2D:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>Stupido Hackettino</title>
   </head>
-  <body>
+  <body class="antialiased">
     <Header />
     <slot />
   </body>
