@@ -37,5 +37,113 @@ import "../styles/global.css";
       background-color: black;
       color: white;
     }
+
+    /* Scroll Animation Classes */
+    .scroll-animate {
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scroll-animate.animate {
+      opacity: 1;
+    }
+
+    /* Fade animations */
+    .fade-up {
+      transform: translateY(60px);
+    }
+    .fade-up.animate {
+      transform: translateY(0);
+    }
+
+    .fade-down {
+      transform: translateY(-60px);
+    }
+    .fade-down.animate {
+      transform: translateY(0);
+    }
+
+    .fade-left {
+      transform: translateX(-60px);
+    }
+    .fade-left.animate {
+      transform: translateX(0);
+    }
+
+    .fade-right {
+      transform: translateX(60px);
+    }
+    .fade-right.animate {
+      transform: translateX(0);
+    }
+
+    /* Scale animations */
+    .scale-up {
+      transform: scale(0.9);
+    }
+    .scale-up.animate {
+      transform: scale(1);
+    }
+
+    /* Rotation animations */
+    .rotate-in {
+      transform: rotate(-10deg) scale(0.9);
+    }
+    .rotate-in.animate {
+      transform: rotate(0deg) scale(1);
+    }
+
+    /* Bounce animation */
+    .bounce-up {
+      transform: translateY(100px) scale(0.8);
+    }
+    .bounce-up.animate {
+      animation: bounceUp 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
+
+    @keyframes bounceUp {
+      0% {
+        transform: translateY(100px) scale(0.8);
+        opacity: 0;
+      }
+      60% {
+        transform: translateY(-20px) scale(1.1);
+        opacity: 1;
+      }
+      80% {
+        transform: translateY(10px) scale(0.95);
+      }
+      100% {
+        transform: translateY(0px) scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Stagger animation delays */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+
+    /* Respect user preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-animate {
+        transition: none;
+        opacity: 1;
+        transform: none !important;
+      }
+    }
   </style>
+
+  <script>
+    import { initScrollAnimator } from '../utils/scrollAnimator.ts';
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initScrollAnimator);
+
+    // Re-initialize on navigation (for SPA-like behavior)
+    document.addEventListener('astro:page-load', initScrollAnimator);
+  </script>
 </html>
