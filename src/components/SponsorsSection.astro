@@ -2,9 +2,9 @@
 import { getSponsorsByTier, tierNames } from "../data/sponsors";
 ---
 
-<section class="w-full bg-orange-500 text-white py-16">
-  <div class="max-w-7xl mx-auto px-8">
-    <h2 class="text-4xl font-black uppercase text-center mb-8 tracking-wide">
+<section class="w-full bg-gradient-to-br from-[#05232e] to-[#05204E] text-white pt-24 pb-16">
+  <div class="max-w-6xl mx-auto px-8">
+    <h2 class="text-4xl md:text-7xl text-white mb-6 text-center tracking-wide" style="font-family: 'Righteous', cursive;">
       ผู้อุปถัมภ์แห่งความเพี้ยน
     </h2>
 
@@ -12,13 +12,16 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
     {
       getSponsorsByTier("tier3").length > 0 && (
         <div class="mb-8">
-          <h3 class="text-xl font-bold text-center mb-4 text-white">
-            {tierNames.tier3}
-          </h3>
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <iconify-icon icon="mdi:crown" class="text-[#19806f] text-4xl"></iconify-icon>
+            <h3 class="text-2xl font-bold text-center text-white" style="font-family: 'K2D', sans-serif;">
+              {tierNames.tier3}
+            </h3>
+          </div>
           <div class="flex flex-wrap gap-6 justify-center items-start">
             {getSponsorsByTier("tier3").map((sponsor) => (
               <div
-                class={`flex flex-col items-center bg-white/10 p-4 rounded-xl transition-transform hover:-translate-y-1 ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-xs`}
+                class={`flex flex-col items-center ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-xs`}
               >
                 {sponsor.url ? (
                   <a
@@ -40,9 +43,9 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
                   />
                 )}
                 {sponsor.message && (
-                  <div class="relative bg-white rounded-2xl px-4 py-3 text-gray-800 text-sm w-72 mt-2">
+                  <div class="relative bg-gray-700 rounded-2xl px-4 py-3 text-white text-sm w-72 mt-2">
                     {/* Speech bubble tail pointing up to logo */}
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
+                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-gray-700" />
                     <p class="text-center leading-relaxed">{sponsor.message}</p>
                   </div>
                 )}
@@ -57,13 +60,16 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
     {
       getSponsorsByTier("tier2").length > 0 && (
         <div class="mb-8">
-          <h3 class="text-xl font-bold text-center mb-4 text-white">
-            {tierNames.tier2}
-          </h3>
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <iconify-icon icon="mdi:medal" class="text-[#19806f] text-4xl"></iconify-icon>
+            <h3 class="text-2xl font-bold text-center text-white" style="font-family: 'K2D', sans-serif;">
+              {tierNames.tier2}
+            </h3>
+          </div>
           <div class="flex flex-wrap gap-6 justify-center items-start">
             {getSponsorsByTier("tier2").map((sponsor) => (
               <div
-                class={`flex flex-col items-center bg-white/10 p-4 rounded-xl transition-transform hover:-translate-y-1 ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-60`}
+                class={`flex flex-col items-center ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-60`}
               >
                 {sponsor.url ? (
                   <a
@@ -85,9 +91,9 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
                   />
                 )}
                 {sponsor.message && (
-                  <div class="relative bg-white rounded-2xl px-4 py-3 text-gray-800 text-sm w-64 mt-2">
+                  <div class="relative bg-gray-700 rounded-2xl px-4 py-3 text-white text-sm w-64 mt-2">
                     {/* Speech bubble tail pointing up to logo */}
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
+                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-gray-700" />
                     <p class="text-center leading-relaxed">{sponsor.message}</p>
                   </div>
                 )}
@@ -102,13 +108,16 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
     {
       getSponsorsByTier("tier1").length > 0 && (
         <div class="mb-8">
-          <h3 class="text-xl font-bold text-center mb-4 text-white">
-            {tierNames.tier1}
-          </h3>
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <iconify-icon icon="mdi:star-circle" class="text-[#19806f] text-4xl"></iconify-icon>
+            <h3 class="text-2xl font-bold text-center text-white" style="font-family: 'K2D', sans-serif;">
+              {tierNames.tier1}
+            </h3>
+          </div>
           <div class="flex flex-wrap gap-6 justify-center items-start">
             {getSponsorsByTier("tier1").map((sponsor) => (
               <div
-                class={`flex flex-col items-center bg-white/10 p-4 rounded-xl transition-transform hover:-translate-y-1 ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-52`}
+                class={`flex flex-col items-center ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-52`}
               >
                 {sponsor.url ? (
                   <a
@@ -130,9 +139,9 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
                   />
                 )}
                 {sponsor.message && (
-                  <div class="relative bg-white rounded-2xl px-4 py-3 text-gray-800 text-sm w-56 mt-2">
+                  <div class="relative bg-gray-700 rounded-2xl px-4 py-3 text-white text-sm w-56 mt-2">
                     {/* Speech bubble tail pointing up to logo */}
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
+                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-gray-700" />
                     <p class="text-center leading-relaxed">{sponsor.message}</p>
                   </div>
                 )}
@@ -146,10 +155,13 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
     <!-- Individual Sponsors -->
     {
       getSponsorsByTier("individual").length > 0 && (
-        <div class="border-t-2 border-white/20 pt-8 mt-8">
-          <h3 class="text-xl font-bold text-center mb-6 text-white">
-            {tierNames.individual}
-          </h3>
+        <div class="border-t border-gray-800 pt-8 mt-8">
+          <div class="flex items-center justify-center gap-3 mb-8">
+            <iconify-icon icon="mdi:account-heart" class="text-[#19806f] text-4xl"></iconify-icon>
+            <h3 class="text-2xl font-bold text-center text-white" style="font-family: 'K2D', sans-serif;">
+              {tierNames.individual}
+            </h3>
+          </div>
           <div class="flex flex-wrap gap-6 justify-center">
             {getSponsorsByTier("individual").map((sponsor) => (
               <div
@@ -178,16 +190,15 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
                   )}
                 </div>
 
-                {/* Speech Bubble */}
                 {(sponsor.message || sponsor.isPlaceholder) && (
-                  <div class="relative bg-white rounded-2xl px-4 py-3 text-gray-800 text-sm w-60">
+                  <div class="relative bg-gray-700 rounded-2xl px-4 py-3 text-white text-sm w-60">
                     {/* Speech bubble tail - aligned with avatar (24px from left edge) */}
-                    <div class="absolute -top-2 left-4 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
+                    <div class="absolute -top-2 left-4 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-gray-700" />
 
                     {sponsor.message ? (
                       <p class="text-left leading-relaxed">{sponsor.message}</p>
                     ) : (
-                      <p class="text-left text-gray-500 italic">
+                      <p class="text-left text-gray-400 italic">
                         Sponsor Us...
                       </p>
                     )}
