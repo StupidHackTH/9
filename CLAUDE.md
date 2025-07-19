@@ -74,7 +74,7 @@ Sponsor information is centralized in `src/data/sponsors.ts` with TypeScript int
 - Asset imports using Astro's `?url` syntax for optimized loading
 
 ### Content Strategy
-The `WEBSITE_DRAFT.md` file contains comprehensive content specifications that should be referenced when updating page content. It includes detailed sections for event information, sponsorship tiers, and guidelines.
+Website content follows a structured approach with modular sections. Component order and layout can be found in `src/pages/index.astro`.
 
 ## Development Notes
 
@@ -82,12 +82,63 @@ The `WEBSITE_DRAFT.md` file contains comprehensive content specifications that s
 - Images are stored in `src/assets/` and imported with `?url` for optimization
 - The base URL is configured for deployment to `/9/` subdirectory
 - All sponsor data includes placeholder entries for future sponsors
-- Thai language content is used throughout for local audience
+- English content with Thai playful elements and local cultural references
+
+## Design Philosophy & Visual Elements
+
+### Iconify Integration
+- Uses `iconify-icon` web component loaded from CDN in Layout.astro
+- Material Design icons (mdi:*) are preferred for consistency
+- Icons use brand color `#19806f` for visual cohesion
+
+### Typography Hierarchy
+- **Headlines**: Righteous font for impact (used in section headers)
+- **Body text**: K2D font for readability (Thai-optimized)
+- **Font sizes**: 4xl/7xl for headers, lg for body text
+- **Color scheme**: White text on black background, with `#19806f` accent color
+
+### Layout Patterns
+- **Grid-based layouts**: 3-column grids for feature sections
+- **Responsive design**: `md:` and `lg:` breakpoints for mobile-first approach
+- **Card components**: Gray-900 backgrounds with rounded corners and hover effects
+- **Aspect ratios**: 4:3 for images to maintain visual consistency
+
+### Interactive Elements
+- **Hover states**: Opacity changes, color transitions, border color changes
+- **Link styling**: Underlines for text links, hover color changes
+- **Button design**: Rounded corners, icon + text combinations
+- **Transitions**: Smooth color and opacity transitions throughout
+
+### Content Strategy Insights
+- **Readability first**: Break long paragraphs into digestible chunks with visual elements
+- **Visual hierarchy**: Use icons, boxes, and spacing to make content scannable
+- **Mixed language**: Content is primarily in English with Thai elements for local flavor
+- **Playful tone**: Maintains fun, irreverent personality while being informative
+
+## Event Context
+
+### Stupid Hackathon Philosophy
+- Focus on "wonderfully useless" projects that nobody needs
+- Emphasis on creativity over business viability
+- Weekend-long event encouraging experimentation
+- Community-driven with no judgment or competition pressure
+- Thai name includes playful elements like "อยากใส่ใจ คือไรอ่ะ 👀"
+
+### Venue Partnership
+- **Game Dev Hub Bangkok**: First coworking space for game developers in Thailand
+- Special arrangement allowing overnight stays during hackathon
+- Located at BB Building, 16th floor, near Terminal 21/Asoke
+- 500 sqm space with professional tools (3D printing, podcast studios)
+- Strong community of indie developers, artists, and industry veterans
 
 ## Content Management
 
 When updating content:
 1. Sponsor information should be updated in `src/data/sponsors.ts`
-2. Major content changes should reference `WEBSITE_DRAFT.md` for specifications
+2. Component order and page structure can be found in `src/pages/index.astro`
 3. Asset files should be placed in `src/assets/` and imported properly
 4. Component updates should maintain the existing section-based structure
+5. **Maintain design consistency**: Use established color scheme, typography, and layout patterns
+6. **Preserve accessibility**: Ensure proper alt text, semantic HTML, and keyboard navigation
+7. **Preserve language mix**: Maintain English content with Thai playful elements
+8. **Test responsiveness**: Verify layouts work on mobile, tablet, and desktop
