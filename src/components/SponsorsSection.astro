@@ -2,9 +2,14 @@
 import { getSponsorsByTier, tierNames } from "../data/sponsors";
 ---
 
-<section id="sponsors" class="w-full bg-gradient-to-br from-[#05232e] to-[#05204E] text-white pt-24 pb-16">
+<section
+  id="sponsors"
+  class="w-full bg-gradient-to-br from-[#05232e] to-[#05204E] text-white pt-24 pb-16"
+>
   <div class="max-w-6xl mx-auto px-8">
-    <h2 class="text-4xl md:text-7xl text-white mb-6 text-center tracking-wide font-display">
+    <h2
+      class="text-4xl md:text-7xl text-white mb-6 text-center tracking-wide font-display"
+    >
       ผู้อุปถัมภ์แห่งความเพี้ยน
     </h2>
 
@@ -13,8 +18,11 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
       getSponsorsByTier("tier3").length > 0 && (
         <div class="mb-8">
           <div class="flex items-center justify-center gap-3 mb-6">
-            <iconify-icon icon="mdi:crown" class="text-[#19806f] text-4xl"></iconify-icon>
-            <h3 class="text-2xl font-bold text-center text-white" style="font-family: 'K2D', sans-serif;">
+            <iconify-icon icon="mdi:crown" class="text-[#19806f] text-4xl" />
+            <h3
+              class="text-2xl font-bold text-center text-white"
+              style="font-family: 'K2D', sans-serif;"
+            >
               {tierNames.tier3}
             </h3>
           </div>
@@ -61,8 +69,11 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
       getSponsorsByTier("tier2").length > 0 && (
         <div class="mb-8">
           <div class="flex items-center justify-center gap-3 mb-6">
-            <iconify-icon icon="mdi:medal" class="text-[#19806f] text-4xl"></iconify-icon>
-            <h3 class="text-2xl font-bold text-center text-white" style="font-family: 'K2D', sans-serif;">
+            <iconify-icon icon="mdi:medal" class="text-[#19806f] text-4xl" />
+            <h3
+              class="text-2xl font-bold text-center text-white"
+              style="font-family: 'K2D', sans-serif;"
+            >
               {tierNames.tier2}
             </h3>
           </div>
@@ -104,108 +115,94 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
       )
     }
 
-    <!-- Tier 1: ผู้อุปถัมภ์รุ่นเยาว์ -->
-    {
-      getSponsorsByTier("tier1").length > 0 && (
-        <div class="mb-8">
-          <div class="flex items-center justify-center gap-3 mb-6">
-            <iconify-icon icon="mdi:star-circle" class="text-[#19806f] text-4xl"></iconify-icon>
-            <h3 class="text-2xl font-bold text-center text-white" style="font-family: 'K2D', sans-serif;">
-              {tierNames.tier1}
-            </h3>
-          </div>
-          <div class="flex flex-wrap gap-6 justify-center items-start">
-            {getSponsorsByTier("tier1").map((sponsor) => (
-              <div
-                class={`flex flex-col items-center ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-52`}
-              >
-                {sponsor.url ? (
-                  <a
-                    href={sponsor.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      class="w-full h-auto max-w-32 rounded-lg mb-3"
-                    />
-                  </a>
-                ) : (
-                  <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    class="w-full h-auto max-w-32 rounded-lg mb-3"
-                  />
-                )}
-                {sponsor.message && (
-                  <div class="relative bg-gray-700 rounded-2xl px-4 py-3 text-white text-sm w-56 mt-2">
-                    {/* Speech bubble tail pointing up to logo */}
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-gray-700" />
-                    <p class="text-center leading-relaxed">{sponsor.message}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )
-    }
-
     <!-- Individual Sponsors -->
     {
       getSponsorsByTier("individual").length > 0 && (
         <div class="border-t border-gray-800 pt-8 mt-8">
           <div class="flex items-center justify-center gap-3 mb-8">
-            <iconify-icon icon="mdi:account-heart" class="text-[#19806f] text-4xl"></iconify-icon>
-            <h3 class="text-2xl font-bold text-center text-white" style="font-family: 'K2D', sans-serif;">
+            <iconify-icon
+              icon="mdi:account-heart"
+              class="text-[#19806f] text-4xl"
+            />
+            <h3
+              class="text-2xl font-bold text-center text-white"
+              style="font-family: 'K2D', sans-serif;"
+            >
               {tierNames.individual}
             </h3>
           </div>
-          <div class="flex flex-wrap gap-6 justify-center">
-            {getSponsorsByTier("individual").map((sponsor) => (
-              <div
-                class={`flex flex-col w-64 ${sponsor.isPlaceholder ? "opacity-60" : ""}`}
-              >
-                {/* Avatar and Name */}
-                <div class="flex items-center gap-3 mb-3">
-                  <img
-                    src={`https://api.dicebear.com/9.x/notionists-neutral/svg?seed=${encodeURIComponent(sponsor.name)}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf&backgroundType=gradientLinear`}
-                    alt={sponsor.name}
-                    class="w-12 h-12 rounded-full bg-white/20 p-1"
-                  />
-                  {sponsor.url ? (
-                    <a
-                      href={sponsor.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-white font-bold text-sm hover:underline"
-                    >
-                      {sponsor.name}
-                    </a>
-                  ) : (
-                    <span class="text-white font-bold text-sm">
-                      {sponsor.name}
-                    </span>
-                  )}
-                </div>
-
-                {(sponsor.message || sponsor.isPlaceholder) && (
-                  <div class="relative bg-gray-700 rounded-2xl px-4 py-3 text-white text-sm w-60">
-                    {/* Speech bubble tail - aligned with avatar (24px from left edge) */}
-                    <div class="absolute -top-2 left-4 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-gray-700" />
-
-                    {sponsor.message ? (
-                      <p class="text-left leading-relaxed">{sponsor.message}</p>
+          <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 max-w-4xl mx-auto">
+            <div class="space-y-6">
+              {getSponsorsByTier("individual").map((sponsor) => (
+                <div
+                  class={`grid grid-cols-1 md:grid-cols-3 gap-4 items-start ${sponsor.isPlaceholder ? "opacity-60" : ""}`}
+                >
+                  {/* Left: Avatar and Name */}
+                  <div class="flex items-center gap-3">
+                    <img
+                      src={`https://api.dicebear.com/9.x/notionists-neutral/svg?seed=${encodeURIComponent(sponsor.name)}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf&backgroundType=gradientLinear`}
+                      alt={sponsor.name}
+                      class="w-12 h-12 rounded-full bg-white/20 p-1"
+                    />
+                    {sponsor.url ? (
+                      <a
+                        href={sponsor.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-white font-bold text-base hover:underline"
+                      >
+                        {sponsor.name}
+                      </a>
                     ) : (
-                      <p class="text-left text-gray-400 italic">
-                        Sponsor Us...
-                      </p>
+                      <span class="text-white font-bold text-base">
+                        {sponsor.name}
+                      </span>
                     )}
                   </div>
-                )}
+
+                  {/* Right: Message Speech Bubble */}
+                  <div class="md:col-span-2">
+                    {(sponsor.message || sponsor.isPlaceholder) && (
+                      <div class="relative bg-gray-700 rounded-2xl px-4 py-3 text-white text-sm w-fit max-w-md">
+                        {/* Speech bubble tail - pointing up on mobile, left on desktop */}
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-gray-700 md:hidden" />
+                        <div class="absolute left-0 top-4 transform -translate-x-2 w-0 h-0 border-t-8 border-b-8 border-r-8 border-t-transparent border-b-transparent border-r-gray-700 hidden md:block" />
+
+                        {sponsor.message ? (
+                          <p class="text-left leading-relaxed">{sponsor.message}</p>
+                        ) : (
+                          <p class="text-left text-gray-400 italic">
+                            Sponsor Us...
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <!-- Missing Sponsors Notice -->
+            <div class="mt-8 bg-[#19806f]/10 border border-[#19806f]/30 rounded-xl p-6">
+              <div class="flex items-start gap-4">
+                <iconify-icon icon="mdi:information" class="text-[#19806f] text-2xl mt-1"></iconify-icon>
+                <div>
+                  <h4 class="text-xl font-bold mb-3 text-white font-subhead">Missing from the list?</h4>
+                  <p class="text-gray-300 leading-relaxed mb-4">
+                    Some generous supporters sent us contributions without filling in our form. If your name is missing from the list above, 
+                    please <a href="https://grtn.org/e/sht9/spon" target="_blank" rel="noopener noreferrer" class="text-[#19806f] hover:underline font-semibold">fill in this form</a> 
+                    and we'll update the website accordingly.
+                  </p>
+                  <p class="text-gray-300 leading-relaxed mb-4">
+                    To change your message or other details, contact our admins at 
+                    <a href="https://m.me/creatorsgarten" target="_blank" rel="noopener noreferrer" class="text-[#19806f] hover:underline font-semibold">m.me/creatorsgarten</a>.
+                  </p>
+                  <p class="text-gray-300 leading-relaxed">
+                    We're still open for individual sponsorship contributions! Every bit of support helps make this wonderfully stupid event possible. 🎉
+                  </p>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       )
