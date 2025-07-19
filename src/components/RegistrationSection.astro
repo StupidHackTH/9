@@ -1,37 +1,126 @@
 ---
+import { ticketBatches, statusInfo, formatReleaseDate } from "../data/tickets";
 ---
 
-<section class="w-full bg-pink-100 text-pink-600 py-16">
-  <div class="max-w-7xl mx-auto px-8">
-    <h2 class="text-4xl font-black uppercase text-center mb-8 tracking-wide">
-      Registration
-    </h2>
-    
-    <div class="max-w-4xl mx-auto">
-      <div class="text-xl leading-relaxed mb-6">
-        <div class="font-bold text-2xl mb-2">Tickets Coming Soon!</div>
-        <div class="space-y-2">
-          <div><span class="font-bold">Platform:</span> Eventpop</div>
-          <div><span class="font-bold">Release Strategy:</span> Themed batches, creative unlocks, CTFs, quizzes, and more!</div>
-          <div><span class="font-bold">Cost:</span> FREE</div>
-          <div><span class="font-bold">Deposit:</span> Some tickets may require ฿300 refundable deposit</div>
+<section class="w-full bg-black text-white pt-24 pb-16">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-7xl text-white mb-6 tracking-wide font-display">
+        REGISTRATION
+      </h2>
+      <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Tickets released in creative batches with puzzles, challenges, and surprises
+      </p>
+      
+      <!-- Event Info -->
+      <div class="bg-gray-900 rounded-xl p-6 max-w-4xl mx-auto mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+          <div>
+            <iconify-icon icon="mdi:ticket" class="text-[#19806f] text-3xl mb-2 block"></iconify-icon>
+            <div class="font-subhead text-lg mb-1">Platform</div>
+            <div class="text-gray-300">Eventpop</div>
+          </div>
+          <div>
+            <iconify-icon icon="mdi:currency-usd-off" class="text-[#19806f] text-3xl mb-2 block"></iconify-icon>
+            <div class="font-subhead text-lg mb-1">Cost</div>
+            <div class="text-gray-300">FREE</div>
+          </div>
+          <div>
+            <iconify-icon icon="mdi:account-multiple" class="text-[#19806f] text-3xl mb-2 block"></iconify-icon>
+            <div class="font-subhead text-lg mb-1">Teams</div>
+            <div class="text-gray-300">Individual & Team</div>
+          </div>
+          <div>
+            <iconify-icon icon="mdi:piggy-bank" class="text-[#19806f] text-3xl mb-2 block"></iconify-icon>
+            <div class="font-subhead text-lg mb-1">Deposit</div>
+            <div class="text-gray-300">฿300 (refundable)</div>
+          </div>
         </div>
       </div>
+    </div>
+
+    <!-- Ticket Batches Timeline -->
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-700 hidden md:block"></div>
       
-      <div class="text-lg mb-6">
-        Follow our <a 
+      <div class="space-y-8">
+        {ticketBatches.map((batch, index) => (
+          <div class="relative flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <!-- Timeline dot -->
+            <div class="absolute left-2 w-4 h-4 bg-[#19806f] rounded-full border-4 border-black hidden md:block"></div>
+            
+            <!-- Date -->
+            <div class="md:ml-12 md:w-32 flex-shrink-0">
+              <div class="text-gray-400 text-sm font-subhead">
+                {formatReleaseDate(batch.releaseDate)}
+              </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="flex-1 bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#19806f] transition-colors">
+              <div class="flex flex-col md:flex-row md:items-center gap-4">
+                <!-- Batch name -->
+                <div class="flex-1">
+                  <a 
+                    href={batch.announcementLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xl font-subhead text-white hover:text-[#19806f] transition-colors block mb-2"
+                  >
+                    {batch.name}
+                  </a>
+                </div>
+                
+                <!-- Status badge -->
+                <div class="flex-shrink-0">
+                  {batch.solutionLink ? (
+                    <a
+                      href={batch.solutionLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors hover:opacity-80 ${statusInfo[batch.status].color} text-white`}
+                    >
+                      <iconify-icon icon={statusInfo[batch.status].icon} class="text-lg"></iconify-icon>
+                      {statusInfo[batch.status].label}
+                    </a>
+                  ) : (
+                    <a
+                      href={batch.announcementLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors hover:opacity-80 ${statusInfo[batch.status].color} text-white`}
+                    >
+                      <iconify-icon icon={statusInfo[batch.status].icon} class="text-lg"></iconify-icon>
+                      {statusInfo[batch.status].label}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="mt-16 text-center">
+      <div class="bg-gradient-to-r from-[#19806f]/10 to-gray-900/50 rounded-xl p-8 border border-[#19806f]/30">
+        <iconify-icon icon="mdi:facebook" class="text-[#19806f] text-4xl mb-4 block"></iconify-icon>
+        <h3 class="text-2xl font-bold mb-4 text-white font-subhead">Stay Updated</h3>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+          Follow our Facebook page for new ticket releases, challenges, and creative batch announcements. 
+          Each batch has its own unique theme and unlock method!
+        </p>
+        <a 
           href="https://www.facebook.com/creatorsgarten"
           target="_blank"
-          class="text-pink-600 hover:text-pink-800 underline font-bold transition-colors"
-        >Facebook page</a> for ticket release announcements.
-      </div>
-      
-      <div class="bg-white/50 rounded-2xl p-6">
-        <h3 class="text-xl font-bold mb-4">Team Formation</h3>
-        <ul class="space-y-2 text-lg">
-          <li>• Some tickets are for team applications</li>
-          <li>• Some tickets are individual (team formation at the event)</li>
-        </ul>
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 bg-[#19806f] hover:bg-[#19806f]/80 text-white px-8 py-4 rounded-xl font-subhead text-lg transition-colors"
+        >
+          <iconify-icon icon="mdi:facebook" class="text-2xl"></iconify-icon>
+          Follow Creatorsgarten
+        </a>
       </div>
     </div>
   </div>
