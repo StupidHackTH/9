@@ -92,10 +92,18 @@ Website content follows a structured approach with modular sections. Component o
 - Icons use brand color `#19806f` for visual cohesion
 
 ### Typography Hierarchy
-- **Headlines**: Righteous font for impact (used in section headers)
-- **Body text**: K2D font for readability (Thai-optimized)
+- **Headlines**: `font-display` class - Righteous font with LINE Seed Sans TH fallback
+  - Always use with `font-weight: normal` (Righteous appears bold at normal weight)
+  - For Thai text, automatically falls back to LINE Seed Sans TH Display (weight-mapped for visual consistency)
+- **Sub-headings**: `font-subhead` class - K2D font for readability (Thai-optimized)
+- **Body text**: System fonts (default) for optimal performance
 - **Font sizes**: 4xl/7xl for headers, lg for body text
 - **Color scheme**: White text on black background, with `#19806f` accent color
+
+### Font Technical Details
+- **LINE Seed Sans TH Display**: Special weight-mapped version where bold file (700) is mapped to normal weight (400) to match Righteous's visual weight
+- **Font fallback strategy**: Righteous → LINE Seed Sans TH Display → cursive (for headlines)
+- **K2D usage**: Sub-headings, day labels, and secondary typography elements
 
 ### Layout Patterns
 - **Grid-based layouts**: 3-column grids for feature sections

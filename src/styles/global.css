@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+/* LINE Seed Sans TH Font */
+@font-face {
+  font-family: 'LINE Seed Sans TH';
+  src: url('../assets/LINESeedSansTH/LINESeedSansTH_W_Rg.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LINE Seed Sans TH';
+  src: url('../assets/LINESeedSansTH/LINESeedSansTH_W_Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LINE Seed Sans TH';
+  src: url('../assets/LINESeedSansTH/LINESeedSansTH_W_XBd.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* LINE Seed Sans TH Display - Weight-mapped for visual consistency with Righteous */
+@font-face {
+  font-family: 'LINE Seed Sans TH Display';
+  src: url('../assets/LINESeedSansTH/LINESeedSansTH_W_Bd.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LINE Seed Sans TH Display';
+  src: url('../assets/LINESeedSansTH/LINESeedSansTH_W_XBd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom Theme Configuration */
+@theme {
+  --font-display: 'Righteous', 'LINE Seed Sans TH Display', cursive;
+  --font-subhead: 'K2D', sans-serif;
+}
