@@ -13,20 +13,20 @@ const goals = [
 <section id="funding" class="w-full bg-gradient-to-br from-[#05232e] to-[#05204E] text-white pt-24 pb-16">
   <div class="max-w-6xl mx-auto px-8">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-7xl text-white mb-6 tracking-wide font-display">
+      <h2 class="text-4xl md:text-7xl text-white mb-6 tracking-wide font-display scroll-animate fade-down">
         FUNDING STATUS
       </h2>
-      <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+      <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto scroll-animate fade-up stagger-1">
         Community-powered hackathon made possible by amazing supporters
       </p>
     </div>
 
     <!-- Progress Overview -->
     <div class="max-w-4xl mx-auto mb-16">
-      <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800">
+      <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 scroll-animate scale-up stagger-2">
         <div class="text-center mb-8">
           <!-- Progress Circle -->
-          <div class="relative inline-flex items-center justify-center">
+          <div class="relative inline-flex items-center justify-center scroll-animate scale-up stagger-3">
             <svg class="w-48 h-48 transform -rotate-90" viewBox="0 0 100 100">
               <!-- Background circle -->
               <circle 
@@ -55,7 +55,7 @@ const goals = [
         </div>
         
         <!-- Amount Details -->
-        <div class="text-center mb-8">
+        <div class="text-center mb-8 scroll-animate fade-up stagger-4">
           <div class="text-3xl md:text-4xl font-bold text-white mb-2 font-subhead">
             ฿{raisedAmount.toLocaleString()}
           </div>
@@ -65,7 +65,7 @@ const goals = [
         </div>
 
         <!-- Success Message -->
-        <div class="bg-[#19806f]/10 border border-[#19806f]/30 rounded-xl p-6 text-center">
+        <div class="bg-[#19806f]/10 border border-[#19806f]/30 rounded-xl p-6 text-center scroll-animate fade-up stagger-5">
           <iconify-icon icon="mdi:heart" class="text-[#19806f] text-4xl mb-3 block"></iconify-icon>
           <h3 class="text-xl font-bold mb-2 text-white font-subhead">Thank You, Community & Sponsors!</h3>
           <p class="text-gray-300">
@@ -78,8 +78,8 @@ const goals = [
 
     <!-- Funding Goals -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {goals.map((goal) => (
-        <div class={`bg-gray-900 rounded-xl p-6 border-2 transition-colors ${
+      {goals.map((goal, index) => (
+        <div class={`bg-gray-900 rounded-xl p-6 border-2 transition-colors scroll-animate fade-up stagger-${index + 6} ${
           goal.achieved 
             ? 'border-[#19806f] bg-[#19806f]/5' 
             : 'border-gray-800 hover:border-gray-700'

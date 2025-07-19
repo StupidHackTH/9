@@ -8,7 +8,7 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
 >
   <div class="max-w-6xl mx-auto px-8">
     <h2
-      class="text-4xl md:text-7xl text-white mb-6 text-center tracking-wide font-display"
+      class="text-4xl md:text-7xl text-white mb-6 text-center tracking-wide font-display scroll-animate fade-down"
     >
       ผู้อุปถัมภ์แห่งความเพี้ยน
     </h2>
@@ -17,7 +17,7 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
     {
       getSponsorsByTier("tier3").length > 0 && (
         <div class="mb-8">
-          <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="flex items-center justify-center gap-3 mb-6 scroll-animate fade-up stagger-1">
             <iconify-icon icon="mdi:crown" class="text-[#19806f] text-4xl" />
             <h3
               class="text-2xl font-bold text-center text-white"
@@ -27,9 +27,9 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
             </h3>
           </div>
           <div class="flex flex-wrap gap-6 justify-center items-start">
-            {getSponsorsByTier("tier3").map((sponsor) => (
+            {getSponsorsByTier("tier3").map((sponsor, index) => (
               <div
-                class={`flex flex-col items-center ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-xs`}
+                class={`flex flex-col items-center ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-xs scroll-animate scale-up stagger-${index + 2}`}
               >
                 {sponsor.url ? (
                   <a
@@ -68,7 +68,7 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
     {
       getSponsorsByTier("tier2").length > 0 && (
         <div class="mb-8">
-          <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="flex items-center justify-center gap-3 mb-6 scroll-animate fade-up stagger-3">
             <iconify-icon icon="mdi:medal" class="text-[#19806f] text-4xl" />
             <h3
               class="text-2xl font-bold text-center text-white"
@@ -78,9 +78,9 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
             </h3>
           </div>
           <div class="flex flex-wrap gap-6 justify-center items-start">
-            {getSponsorsByTier("tier2").map((sponsor) => (
+            {getSponsorsByTier("tier2").map((sponsor, index) => (
               <div
-                class={`flex flex-col items-center ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-60`}
+                class={`flex flex-col items-center ${sponsor.isPlaceholder ? "opacity-60" : ""} max-w-60 scroll-animate scale-up stagger-${index + 4}`}
               >
                 {sponsor.url ? (
                   <a
@@ -119,7 +119,7 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
     {
       getSponsorsByTier("individual").length > 0 && (
         <div class="border-t border-gray-800 pt-8 mt-8">
-          <div class="flex items-center justify-center gap-3 mb-8">
+          <div class="flex items-center justify-center gap-3 mb-8 scroll-animate fade-up stagger-4">
             <iconify-icon
               icon="mdi:account-heart"
               class="text-[#19806f] text-4xl"
@@ -131,11 +131,11 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
               {tierNames.individual}
             </h3>
           </div>
-          <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 max-w-4xl mx-auto">
+          <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 max-w-4xl mx-auto scroll-animate fade-up stagger-5">
             <div class="space-y-6">
-              {getSponsorsByTier("individual").map((sponsor) => (
+              {getSponsorsByTier("individual").map((sponsor, index) => (
                 <div
-                  class={`grid grid-cols-1 md:grid-cols-3 gap-4 items-start ${sponsor.isPlaceholder ? "opacity-60" : ""}`}
+                  class={`grid grid-cols-1 md:grid-cols-3 gap-4 items-start ${sponsor.isPlaceholder ? "opacity-60" : ""} scroll-animate fade-left stagger-${index + 6}`}
                 >
                   {/* Left: Avatar and Name */}
                   <div class="flex items-center gap-3">
@@ -183,7 +183,7 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
             </div>
             
             <!-- Missing Sponsors Notice -->
-            <div class="mt-8 bg-[#19806f]/10 border border-[#19806f]/30 rounded-xl p-6">
+            <div class="mt-8 bg-[#19806f]/10 border border-[#19806f]/30 rounded-xl p-6 scroll-animate fade-up">
               <div class="flex items-start gap-4">
                 <iconify-icon icon="mdi:information" class="text-[#19806f] text-2xl mt-1"></iconify-icon>
                 <div>

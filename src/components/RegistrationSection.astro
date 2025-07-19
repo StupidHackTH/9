@@ -5,32 +5,32 @@ import { ticketBatches, statusInfo, formatReleaseDate } from "../data/tickets";
 <section id="registration" class="w-full bg-black text-white pt-24 pb-16">
   <div class="max-w-6xl mx-auto px-8">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-7xl text-white mb-6 tracking-wide font-display">
+      <h2 class="text-4xl md:text-7xl text-white mb-6 tracking-wide font-display scroll-animate fade-down">
         REGISTRATION
       </h2>
-      <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+      <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 scroll-animate fade-up stagger-1">
         Tickets released in creative batches with puzzles, challenges, and surprises
       </p>
       
       <!-- Event Info -->
-      <div class="bg-gray-900 rounded-xl p-6 max-w-4xl mx-auto mb-12">
+      <div class="bg-gray-900 rounded-xl p-6 max-w-4xl mx-auto mb-12 scroll-animate scale-up stagger-2">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
-          <div>
+          <div class="scroll-animate fade-up stagger-3">
             <iconify-icon icon="mdi:ticket" class="text-[#19806f] text-3xl mb-2 block"></iconify-icon>
             <div class="font-subhead text-lg mb-1">Platform</div>
             <div class="text-gray-300">Eventpop</div>
           </div>
-          <div>
+          <div class="scroll-animate fade-up stagger-4">
             <iconify-icon icon="mdi:currency-usd-off" class="text-[#19806f] text-3xl mb-2 block"></iconify-icon>
             <div class="font-subhead text-lg mb-1">Cost</div>
             <div class="text-gray-300">FREE</div>
           </div>
-          <div>
+          <div class="scroll-animate fade-up stagger-5">
             <iconify-icon icon="mdi:account-multiple" class="text-[#19806f] text-3xl mb-2 block"></iconify-icon>
             <div class="font-subhead text-lg mb-1">Teams</div>
             <div class="text-gray-300">Individual & Team</div>
           </div>
-          <div>
+          <div class="scroll-animate fade-up stagger-6">
             <iconify-icon icon="mdi:piggy-bank" class="text-[#19806f] text-3xl mb-2 block"></iconify-icon>
             <div class="font-subhead text-lg mb-1">Deposit</div>
             <div class="text-gray-300">฿300 (refundable)</div>
@@ -42,13 +42,13 @@ import { ticketBatches, statusInfo, formatReleaseDate } from "../data/tickets";
     <!-- Ticket Batches Timeline -->
     <div class="relative">
       <!-- Timeline line -->
-      <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-700 hidden md:block"></div>
+      <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-700 hidden md:block scroll-animate fade-down"></div>
       
       <div class="space-y-8">
         {ticketBatches.map((batch, index) => (
-          <div class="relative flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+          <div class="relative flex flex-col md:flex-row md:items-center gap-4 md:gap-8 scroll-animate fade-left stagger-{index + 7}">
             <!-- Timeline dot -->
-            <div class="absolute left-2 w-4 h-4 bg-[#19806f] rounded-full border-4 border-black hidden md:block"></div>
+            <div class="absolute left-2 w-4 h-4 bg-[#19806f] rounded-full border-4 border-black hidden md:block scroll-animate scale-up stagger-{index + 8}"></div>
             
             <!-- Date -->
             <div class="md:ml-12 md:w-32 flex-shrink-0">
@@ -105,10 +105,10 @@ import { ticketBatches, statusInfo, formatReleaseDate } from "../data/tickets";
 
     <!-- Call to Action -->
     <div class="mt-16 text-center">
-      <div class="bg-gradient-to-r from-[#19806f]/10 to-gray-900/50 rounded-xl p-8 border border-[#19806f]/30">
-        <iconify-icon icon="mdi:facebook" class="text-[#19806f] text-4xl mb-4 block"></iconify-icon>
-        <h3 class="text-2xl font-bold mb-4 text-white font-subhead">Stay Updated</h3>
-        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      <div class="bg-gradient-to-r from-[#19806f]/10 to-gray-900/50 rounded-xl p-8 border border-[#19806f]/30 scroll-animate fade-up">
+        <iconify-icon icon="mdi:facebook" class="text-[#19806f] text-4xl mb-4 block scroll-animate scale-up stagger-1"></iconify-icon>
+        <h3 class="text-2xl font-bold mb-4 text-white font-subhead scroll-animate fade-up stagger-2">Stay Updated</h3>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6 scroll-animate fade-up stagger-3">
           Follow our Facebook page for new ticket releases, challenges, and creative batch announcements. 
           Each batch has its own unique theme and unlock method!
         </p>
@@ -116,7 +116,7 @@ import { ticketBatches, statusInfo, formatReleaseDate } from "../data/tickets";
           href="https://www.facebook.com/creatorsgarten"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 bg-[#19806f] hover:bg-[#19806f]/80 text-white px-8 py-4 rounded-xl font-subhead text-lg transition-colors"
+          class="inline-flex items-center gap-3 bg-[#19806f] hover:bg-[#19806f]/80 text-white px-8 py-4 rounded-xl font-subhead text-lg transition-colors scroll-animate bounce-up stagger-4"
         >
           <iconify-icon icon="mdi:facebook" class="text-2xl"></iconify-icon>
           Follow Creatorsgarten
