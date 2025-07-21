@@ -3,7 +3,8 @@ export interface Sponsor {
   logo: string;
   url?: string;
   message?: string;
-  tier: "tier3" | "tier2" | "tier1" | "individual";
+  tier: "tier3" | "tier2" | "tier1" | "individual" | "in-kind";
+  contribution?: string;
   isPlaceholder?: boolean;
 }
 
@@ -79,12 +80,43 @@ export const sponsors: Sponsor[] = [
       "ขอคำนับแด่ผู้จัดงาน ซึ่งจัดได้งดงามดุจบุปผาเบ่งบานในฤดูฝน งานดีจนสงสารคนไม่ทัน ปัญญาพลันไหลหลั่ง ดั่งน้ำหลากกลางวันฝน",
     tier: "individual",
   },
+
+  // In-Kind Sponsors: ผู้ใจบุญแจกของ
+  {
+    name: "Chalawan 3D",
+    logo: "", // Will need logo
+    url: "https://chalawan3d.com/",
+    contribution: "Some 3d-printed prizes",
+    tier: "in-kind",
+  },
+  {
+    name: "cuup.coffee",
+    logo: "", // Will need logo
+    url: "https://www.instagram.com/cuup.coffee",
+    contribution: "Coffee for participants",
+    tier: "in-kind",
+  },
+  {
+    name: "Eventpop",
+    logo: "", // Will need logo
+    url: "https://www.eventpop.me/",
+    contribution: "Ticketing platform",
+    tier: "in-kind",
+  },
+  {
+    name: "Float16.cloud",
+    logo: "", // Will need logo
+    url: "", // Will need URL
+    contribution: "Serverless GPU credits",
+    tier: "in-kind",
+  },
 ];
 
 export const tierNames = {
   tier3: "เจ้าพระยามหาเพี้ยนบันลือโลก",
   tier2: "เสนาบดีผู้มากเมตตา",
   individual: "ผู้อุปถัมภ์ใจกุศล",
+  "in-kind": "ผู้ใจบุญแจกของ",
 };
 
 export function getSponsorsByTier(tier: Sponsor["tier"]) {

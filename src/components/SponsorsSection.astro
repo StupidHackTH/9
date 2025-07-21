@@ -207,5 +207,94 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
         </div>
       )
     }
+
+    <!-- In-Kind Sponsors: ผู้ใจบุญแจกของ -->
+    {
+      getSponsorsByTier("in-kind").length > 0 && (
+        <div class="border-t border-gray-800 pt-8 mt-8">
+          <div class="flex items-center justify-center gap-3 mb-8 scroll-animate fade-up stagger-6">
+            <iconify-icon
+              icon="mdi:gift"
+              class="text-[#19806f] text-4xl"
+            />
+            <h3
+              class="text-2xl font-bold text-center text-white"
+              style="font-family: 'K2D', sans-serif;"
+            >
+              {tierNames["in-kind"]}
+            </h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {getSponsorsByTier("in-kind").map((sponsor, index) => (
+              <div
+                class={`bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#19806f] transition-colors group ${sponsor.isPlaceholder ? "opacity-60" : ""} scroll-animate fade-up stagger-${index + 7}`}
+              >
+                <div class="flex items-center gap-4">
+                  {/* Logo placeholder or actual logo */}
+                  <div class="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                    {sponsor.logo ? (
+                      sponsor.url ? (
+                        <a
+                          href={sponsor.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img
+                            src={sponsor.logo}
+                            alt={sponsor.name}
+                            class="w-full h-full object-contain rounded-lg"
+                          />
+                        </a>
+                      ) : (
+                        <img
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          class="w-full h-full object-contain rounded-lg"
+                        />
+                      )
+                    ) : (
+                      <iconify-icon 
+                        icon={
+                          sponsor.contribution?.includes("Coffee") ? "mdi:coffee" :
+                          sponsor.contribution?.includes("Prizes") ? "mdi:trophy" :
+                          sponsor.contribution?.includes("Ticketing") ? "mdi:ticket" :
+                          sponsor.contribution?.includes("GPU") ? "mdi:cloud" :
+                          "mdi:gift"
+                        }
+                        class="text-[#19806f] text-3xl"
+                      />
+                    )}
+                  </div>
+                  
+                  {/* Content */}
+                  <div class="flex-1">
+                    {sponsor.url ? (
+                      <a
+                        href={sponsor.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-white font-bold text-lg hover:text-[#19806f] transition-colors block"
+                      >
+                        {sponsor.name}
+                      </a>
+                    ) : (
+                      <h4 class="text-white font-bold text-lg">
+                        {sponsor.name}
+                      </h4>
+                    )}
+                    
+                    {sponsor.contribution && (
+                      <p class="text-gray-300 text-sm mt-1">
+                        {sponsor.contribution}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
   </div>
 </section>

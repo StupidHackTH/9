@@ -53,7 +53,7 @@ export const ticketBatches: TicketBatch[] = [
   {
     name: "Human Only! Challenge",
     releaseDate: "2025-01-12",
-    status: "ongoing",
+    status: "sold-out",
     announcementLink:
       "https://www.facebook.com/1098892262284446/posts/1140794781427527",
   },
@@ -74,7 +74,7 @@ export const ticketBatches: TicketBatch[] = [
   {
     name: "แตะหญ้า Chula",
     releaseDate: "2025-01-14",
-    status: "ongoing",
+    status: "sold-out",
     announcementLink:
       "https://www.facebook.com/1098892262284446/posts/1141860221320983",
   },
@@ -95,7 +95,7 @@ export const ticketBatches: TicketBatch[] = [
   {
     name: "พาล ชาเลนจ์",
     releaseDate: "2025-01-15",
-    status: "ongoing",
+    status: "sold-out",
     announcementLink:
       "https://www.facebook.com/1098892262284446/posts/1142679694572369",
   },
@@ -118,15 +118,15 @@ export const ticketBatches: TicketBatch[] = [
   {
     name: "Manchild Challenge",
     releaseDate: "2025-01-18",
-    status: "ongoing",
+    status: "sold-out",
     announcementLink:
       "https://www.facebook.com/1098892262284446/posts/1145007314339607",
   },
   {
     name: "วิหคอัสดง (Late Bird)",
     releaseDate: "",
-    status: "coming-soon",
-    announcementLink: "",
+    status: "ongoing",
+    announcementLink: "https://www.facebook.com/creatorsgarten/posts/pfbid026FrkudpxcYregovydi4Rti3yZrcUYoQbLc8fuwE5pN8x57tqedHCuvAqdojMejkWl",
   },
 ];
 
