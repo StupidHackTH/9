@@ -35,7 +35,7 @@ export const ticketBatches: TicketBatch[] = [
   {
     name: "ม้วนหนังสือขึ้นทะเบียนทีมผู้อาจหาญในความโง่ (Team application)",
     releaseDate: "2025-01-09",
-    status: "confirming",
+    status: "sold-out",
     announcementLink:
       "https://www.facebook.com/1098892262284446/posts/1138203471686658",
     solutionLink:
@@ -67,7 +67,7 @@ export const ticketBatches: TicketBatch[] = [
   {
     name: "แตะหญ้า Online",
     releaseDate: "2025-01-14",
-    status: "evaluating",
+    status: "sold-out",
     announcementLink:
       "https://www.facebook.com/1098892262284446/posts/1141628484677490",
   },
@@ -109,7 +109,7 @@ export const ticketBatches: TicketBatch[] = [
   {
     name: "เข้าเฝ้าแสดงเจตจำนง (Individual application)",
     releaseDate: "2025-01-16",
-    status: "confirming",
+    status: "sold-out",
     announcementLink:
       "https://www.facebook.com/1098892262284446/posts/1143478487825823",
     solutionLink:
@@ -126,7 +126,8 @@ export const ticketBatches: TicketBatch[] = [
     name: "วิหคอัสดง (Late Bird)",
     releaseDate: "",
     status: "ongoing",
-    announcementLink: "https://www.facebook.com/creatorsgarten/posts/pfbid026FrkudpxcYregovydi4Rti3yZrcUYoQbLc8fuwE5pN8x57tqedHCuvAqdojMejkWl",
+    announcementLink:
+      "https://www.facebook.com/creatorsgarten/posts/pfbid026FrkudpxcYregovydi4Rti3yZrcUYoQbLc8fuwE5pN8x57tqedHCuvAqdojMejkWl",
   },
 ];
 
