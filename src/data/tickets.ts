@@ -124,8 +124,8 @@ export const ticketBatches: TicketBatch[] = [
   },
   {
     name: "วิหคอัสดง (Late Bird)",
-    releaseDate: "",
-    status: "ongoing",
+    releaseDate: "2025-07-22",
+    status: "sold-out",
     announcementLink:
       "https://www.facebook.com/creatorsgarten/posts/pfbid026FrkudpxcYregovydi4Rti3yZrcUYoQbLc8fuwE5pN8x57tqedHCuvAqdojMejkWl",
   },
