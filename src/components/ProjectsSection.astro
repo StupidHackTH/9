@@ -1,0 +1,141 @@
+---
+import { teams } from "../data/teams";
+
+// Function to extract image URL from markdown format ![alt](url)
+function extractImageUrl(imageMarkdown: string): string {
+  const match = imageMarkdown.match(/!\[.*?\]\((.*?)\)/);
+  return match ? match[1] : "";
+}
+
+// Function to parse links from markdown format [Label](url)
+function parseLinks(linksMarkdown: string): Array<{label: string, url: string, icon: string}> {
+  if (!linksMarkdown.trim()) return [];
+  
+  const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const links: Array<{label: string, url: string, icon: string}> = [];
+  let match;
+  
+  while ((match = linkPattern.exec(linksMarkdown)) !== null) {
+    const label = match[1];
+    const url = match[2];
+    
+    // Map link types to icons
+    let icon = "mdi:link"; // default
+    if (label.toLowerCase().includes("github")) {
+      icon = "mdi:github";
+    } else if (label.toLowerCase().includes("demo")) {
+      icon = "mdi:play-circle";
+    } else if (label.toLowerCase().includes("canva")) {
+      icon = "mdi:palette";
+    } else if (label.toLowerCase().includes("slides")) {
+      icon = "mdi:presentation";
+    }
+    
+    links.push({ label, url, icon });
+  }
+  
+  return links;
+}
+---
+
+<section id="projects" class="w-full bg-black pt-24 pb-16">
+  <div class="max-w-6xl mx-auto px-8">
+    <h2
+      class="text-4xl md:text-7xl text-white mb-6 text-center tracking-wide font-display scroll-animate fade-down"
+    >
+      PROJECTS
+    </h2>
+
+    <div
+      class="inline-block text-white px-6 py-3 rounded-lg mb-12 text-xl md:text-2xl font-medium transform -rotate-2 bg-[#19806f] scroll-animate bounce-up stagger-1 mx-auto block text-center"
+      style="font-family: 'K2D', sans-serif;"
+    >
+      ผลงานแห่งความเพี้ยน 🎨
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {
+        teams.map((team, index) => {
+          const imageUrl = extractImageUrl(team.project.image);
+          const links = parseLinks(team.project.links);
+          
+          return (
+            <div
+              class={`bg-gray-900 rounded-xl border border-gray-800 hover:border-[#19806f] transition-all duration-300 overflow-hidden scroll-animate fade-up stagger-${index + 2}`}
+            >
+              {/* Project Image */}
+              {imageUrl && (
+                <div class="aspect-[1200/630] overflow-hidden">
+                  <img
+                    src={imageUrl}
+                    alt={team.project.name}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              )}
+              
+              {/* Content */}
+              <div class="p-6">
+                {/* Project Name & Team */}
+                <div class="mb-4">
+                  <h3
+                    class="text-xl font-bold text-white mb-2"
+                    style="font-family: 'K2D', sans-serif;"
+                  >
+                    {team.project.name}
+                  </h3>
+                  <p class="text-[#19806f] font-medium text-sm">
+                    by {team.name}
+                  </p>
+                </div>
+
+                {/* Description */}
+                <p class="text-gray-300 leading-relaxed mb-4 text-sm">
+                  {team.project.description.length > 200 
+                    ? team.project.description.substring(0, 200) + "..." 
+                    : team.project.description
+                  }
+                </p>
+
+                {/* Links */}
+                {links.length > 0 && (
+                  <div class="flex flex-wrap gap-3 mb-4">
+                    {links.map((link) => (
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-3 py-2 bg-gray-800 hover:bg-[#19806f] text-white text-sm rounded-lg transition-colors"
+                      >
+                        <iconify-icon icon={link.icon} class="text-lg"></iconify-icon>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                {/* Manorah Commentary */}
+                <div class="border-t border-gray-800 pt-4 mt-4">
+                  <div class="flex items-start gap-3">
+                    <iconify-icon 
+                      icon="mdi:drama-masks" 
+                      class="text-[#19806f] text-xl mt-1 flex-shrink-0"
+                    ></iconify-icon>
+                    <div>
+                      <h4 class="text-[#19806f] font-semibold text-sm mb-2" style="font-family: 'K2D', sans-serif;">
+                        มโนราห์ว่าไง
+                      </h4>
+                      <p class="text-gray-300 text-sm leading-relaxed italic">
+                        {team.manorah}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
