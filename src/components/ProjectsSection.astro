@@ -36,6 +36,40 @@ function parseLinks(linksMarkdown: string): Array<{label: string, url: string, i
   
   return links;
 }
+
+// Function to parse team members from mixed markdown/plain text format
+function parseMembers(membersString: string): Array<{name: string, url?: string, icon: string}> {
+  if (!membersString.trim()) return [];
+  
+  const memberLines = membersString.split('\n').map(line => line.trim()).filter(line => line);
+  const members: Array<{name: string, url?: string, icon: string}> = [];
+  
+  memberLines.forEach(line => {
+    // Check if line contains markdown link [Name](URL)
+    const linkMatch = line.match(/\[([^\]]+)\]\(([^)]+)\)/);
+    if (linkMatch) {
+      const name = linkMatch[1];
+      const url = linkMatch[2];
+      
+      // Map URL types to icons
+      let icon = "mdi:account-circle"; // default for linked members
+      if (url.includes('github.com')) {
+        icon = "mdi:github";
+      } else if (url.includes('linkedin.com')) {
+        icon = "mdi:linkedin";
+      } else if (url.includes('twitter.com') || url.includes('x.com')) {
+        icon = "mdi:twitter";
+      }
+      
+      members.push({ name, url, icon });
+    } else {
+      // Plain text member name
+      members.push({ name: line, icon: "mdi:account" });
+    }
+  });
+  
+  return members;
+}
 ---
 
 <section id="projects" class="w-full bg-black pt-24 pb-16">
@@ -58,6 +92,7 @@ function parseLinks(linksMarkdown: string): Array<{label: string, url: string, i
         teams.map((team, index) => {
           const imageUrl = extractImageUrl(team.project.image);
           const links = parseLinks(team.project.links);
+          const members = parseMembers(team.members);
           
           return (
             <div
@@ -84,9 +119,33 @@ function parseLinks(linksMarkdown: string): Array<{label: string, url: string, i
                   >
                     {team.project.name}
                   </h3>
-                  <p class="text-[#19806f] font-medium text-sm">
+                  <p class="text-[#19806f] font-medium text-sm mb-3">
                     by {team.name}
                   </p>
+                  
+                  {/* Team Members */}
+                  {members.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-3">
+                      {members.map((member) => (
+                        member.url ? (
+                          <a
+                            href={member.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1.5 px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white text-xs rounded-md transition-colors"
+                          >
+                            <iconify-icon icon={member.icon} class="text-sm"></iconify-icon>
+                            {member.name}
+                          </a>
+                        ) : (
+                          <span class="inline-flex items-center gap-1.5 px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded-md">
+                            <iconify-icon icon={member.icon} class="text-sm"></iconify-icon>
+                            {member.name}
+                          </span>
+                        )
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Description */}
