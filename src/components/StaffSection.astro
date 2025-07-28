@@ -1,0 +1,156 @@
+---
+import { staffs, websiteRoles } from "../data/staff";
+
+// Create a map of role IDs to role names for easy lookup
+const roleMap = new Map(websiteRoles.map(role => [role.id, role]));
+
+// Function to get role names for a staff member
+function getStaffRoles(roleIds: number[]) {
+  // Get unique role IDs to avoid duplicates
+  const uniqueRoleIds = [...new Set(roleIds)];
+  const roles = uniqueRoleIds
+    .map(id => roleMap.get(id))
+    .filter(role => role !== undefined)
+    .map(role => role!.name);
+  
+  // Sort alphabetically but put "Lead Organizer" first
+  return roles.sort((a, b) => {
+    if (a === "Lead Organizer") return -1;
+    if (b === "Lead Organizer") return 1;
+    return a.localeCompare(b);
+  });
+}
+
+// Function to generate Creatorsgarten profile URL
+function getProfileUrl(username: string) {
+  return `https://creatorsgarten.org/wiki/People/${username}`;
+}
+
+// Function to generate Creatorsgarten avatar URL
+function getAvatarUrl(username: string) {
+  return `https://creatorsgarten.org/api/users/@${username}/picture`;
+}
+
+// Function to generate fallback avatar URL
+function getFallbackAvatarUrl(nickname: string) {
+  return `https://api.dicebear.com/6.x/bottts-neutral/svg?seed=${encodeURIComponent(nickname)}`;
+}
+---
+
+<section
+  id="staff"
+  class="w-full bg-gradient-to-br from-[#05232e] to-[#05204E] text-white pt-24 pb-16"
+>
+  <div class="max-w-6xl mx-auto px-8">
+    <h2
+      class="text-4xl md:text-7xl text-white mb-6 text-center tracking-wide font-display scroll-animate fade-down"
+    >
+      EVENT STAFF
+    </h2>
+
+    <div
+      class="inline-block text-white px-6 py-3 rounded-lg mb-12 text-xl md:text-2xl font-medium transform -rotate-1 bg-[#19806f] scroll-animate bounce-up stagger-1 mx-auto block text-center"
+      style="font-family: 'K2D', sans-serif;"
+    >
+      ทีมงานแห่งความเพี้ยน 🎭
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {
+        staffs.map((staff, index) => {
+          const roles = getStaffRoles(staff.websiteRoleIds);
+          const hasUsername = staff.username && staff.username.trim() !== "";
+          
+          return (
+            <div
+              class={`bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#19806f] transition-all duration-300 scroll-animate fade-up stagger-${index + 2}`}
+            >
+              {/* Avatar + Names Row */}
+              <div class="flex items-center gap-4 mb-4">
+                {/* Avatar - always show */}
+                <div class="flex-shrink-0">
+                  {hasUsername ? (
+                    <a
+                      href={getProfileUrl(staff.username!)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block"
+                    >
+                      <img
+                        src={getAvatarUrl(staff.username!)}
+                        alt={staff.name}
+                        class="w-16 h-16 rounded-full bg-gray-800 object-cover hover:opacity-80 transition-opacity"
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src={getFallbackAvatarUrl(staff.nickname)}
+                      alt={staff.name}
+                      class="w-16 h-16 rounded-full bg-gray-800 object-cover"
+                    />
+                  )}
+                </div>
+                
+                {/* Names */}
+                <div class="flex-1 min-w-0">
+                  {/* Nickname - prominently displayed */}
+                  {hasUsername ? (
+                    <a
+                      href={getProfileUrl(staff.username!)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-white font-bold text-lg hover:text-[#19806f] transition-colors block"
+                      style="font-family: 'K2D', sans-serif;"
+                    >
+                      {staff.nickname}
+                    </a>
+                  ) : (
+                    <h3 
+                      class="text-white font-bold text-lg"
+                      style="font-family: 'K2D', sans-serif;"
+                    >
+                      {staff.nickname}
+                    </h3>
+                  )}
+                  
+                  {/* Full Name */}
+                  <p class="text-[#19806f] font-medium text-sm mt-1">
+                    {staff.name}
+                  </p>
+                </div>
+              </div>
+
+              {/* Roles Row */}
+              {roles.length > 0 && (
+                <div class="flex flex-wrap gap-1">
+                  {roles.map((roleName) => {
+                    const roleDetails = roleMap.get(websiteRoles.find(r => r.name === roleName)?.id);
+                    return (
+                      <span 
+                        class="inline-block px-2 py-0.5 bg-gray-800 text-gray-300 text-xs rounded hover:bg-gray-700 transition-colors cursor-help"
+                        title={roleDetails?.description || roleName}
+                      >
+                        {roleName}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })
+      }
+    </div>
+
+    {/* Thank you message */}
+    <div class="mt-16 bg-[#19806f]/10 border border-[#19806f]/30 rounded-xl p-8 text-center scroll-animate fade-up">
+      <iconify-icon icon="mdi:heart" class="text-[#19806f] text-4xl mb-4 block"></iconify-icon>
+      <h3 class="text-2xl font-bold mb-4 text-white font-subhead">Thank You to Our Amazing Team!</h3>
+      <p class="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        This hackathon wouldn't be possible without the incredible dedication and hard work of our volunteer staff. 
+        From organizing logistics to creating the perfect atmosphere for creativity, each person contributed their unique skills 
+        to make Stupido Hackettino #9 a wonderfully weird success! 🎉
+      </p>
+    </div>
+  </div>
+</section>
