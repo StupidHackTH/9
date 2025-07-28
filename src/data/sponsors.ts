@@ -106,8 +106,15 @@ export const sponsors: Sponsor[] = [
   {
     name: "Float16.cloud",
     logo: "", // Will need logo
-    url: "", // Will need URL
+    url: "https://float16.cloud/", // Will need URL
     contribution: "Serverless GPU credits",
+    tier: "in-kind",
+  },
+  {
+    name: "CelestiAI",
+    logo: "", // Will need logo
+    url: "https://celestiai.co/", // Will need URL
+    contribution: "Text-to-speech credits",
     tier: "in-kind",
   },
 ];
