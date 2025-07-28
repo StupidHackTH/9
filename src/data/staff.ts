@@ -52,7 +52,7 @@ export const {
     {
       id: 8,
       name: "Wasin Silakong",
-      nickname: "อุดดี้",
+      nickname: "อู๊ดดี้",
       websiteRoleIds: [25, 27, 28, 11, 18, 22],
     },
     {
