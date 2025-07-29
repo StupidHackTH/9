@@ -1,5 +1,6 @@
 ---
 import { getSponsorsByTier, tierNames } from "../data/sponsors";
+import { donors } from "../data/donors";
 ---
 
 <section
@@ -199,6 +200,79 @@ import { getSponsorsByTier, tierNames } from "../data/sponsors";
                   </p>
                   <p class="text-gray-300 leading-relaxed">
                     We're still open for individual sponsorship contributions! Every bit of support helps make this wonderfully stupid event possible. 🎉
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    <!-- Donors Section: ผู้บริจาคแห่งความดี -->
+    {
+      (donors[0].length > 0 || donors[1].length > 0 || donors[2].length > 0) && (
+        <div class="border-t border-gray-800 pt-8 mt-8">
+          <div class="flex items-center justify-center gap-3 mb-8 scroll-animate fade-up stagger-7">
+            <iconify-icon
+              icon="mdi:heart"
+              class="text-[#19806f] text-4xl"
+            />
+            <h3
+              class="text-2xl font-bold text-center text-white"
+              style="font-family: 'K2D', sans-serif;"
+            >
+              ชาวบ้านผู้ไม่เอาเงินคืน
+            </h3>
+          </div>
+          <div class="max-w-4xl mx-auto text-center scroll-animate fade-up stagger-8">
+            <!-- Tier 1: Deposit + Extra (Largest, most prominent) -->
+            {donors[0].length > 0 && (
+              <div class="mb-8">
+                <div class="flex flex-wrap justify-center gap-4">
+                  {donors[0].map((name, index) => (
+                    <span class="text-lg font-bold text-white bg-gray-700/50 border border-gray-700 px-4 py-2 rounded-full scroll-animate fade-up stagger-${index + 9}">
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <!-- Tier 2: Full Deposit (Medium prominence) -->
+            {donors[1].length > 0 && (
+              <div class="mb-6">
+                <div class="flex flex-wrap justify-center gap-3">
+                  {donors[1].map((name, index) => (
+                    <span class="text-base font-semibold text-white bg-gray-700/50 border border-gray-700 px-3 py-2 rounded-full scroll-animate fade-up stagger-${index + 10}">
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <!-- Tier 3: Partial Deposit (Standard prominence) -->
+            {donors[2].length > 0 && (
+              <div class="mb-4">
+                <div class="flex flex-wrap justify-center gap-2">
+                  {donors[2].map((name, index) => (
+                    <span class="text-sm text-white bg-gray-700/50 border border-gray-700 px-3 py-1 rounded-full scroll-animate fade-up stagger-${index + 17}">
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <!-- Thank you message -->
+            <div class="mt-8 bg-[#19806f]/10 border border-[#19806f]/30 rounded-xl p-6 scroll-animate fade-up">
+              <div class="flex items-start gap-4">
+                <iconify-icon icon="mdi:heart-multiple" class="text-[#19806f] text-2xl mt-1"></iconify-icon>
+                <div class="text-left">
+                  <h4 class="text-xl font-bold mb-3 text-white font-subhead">Thank you for your support</h4>
+                  <p class="text-gray-300 leading-relaxed">
+                    Thank you to everyone who chose to donate their deposit to support Stupido Hackettino ๙.
                   </p>
                 </div>
               </div>
