@@ -1,0 +1,318 @@
+---
+import manorahCappuccina from "../assets/manorah_cappuccina_blur.webp?url";
+import { statementOfActivities } from "../data/finance";
+
+// Calculate totals
+const totalIncome = statementOfActivities.income.reduce(
+  (sum, item) => sum + item.amount,
+  0
+);
+const totalExpenses = statementOfActivities.expenses.reduce(
+  (sum, item) => sum + item.amount,
+  0
+);
+const leftover = totalIncome - totalExpenses;
+
+// Sort income and expenses by amount (largest first)
+const sortedIncome = [...statementOfActivities.income].sort(
+  (a, b) => b.amount - a.amount
+);
+const sortedExpenses = [...statementOfActivities.expenses].sort(
+  (a, b) => b.amount - a.amount
+);
+
+// Special handling for "From sht8" - move to top
+const fromSht8Index = sortedIncome.findIndex(
+  (item) => item.label === "From Previous Event"
+);
+const fromSht8 = sortedIncome.splice(fromSht8Index, 1)[0];
+const incomeWithoutSht8 = sortedIncome;
+
+// Chart dimensions
+const width = 800;
+const height = 640;
+const logoWidth = 220;
+const logoHeight = 240;
+const centerX = width / 2;
+const centerY = height / 2;
+---
+
+<section class="py-16 bg-black" id="cash-flow-chart">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-display text-center mb-12 text-white">
+      💰 Cash Flow Overview
+    </h2>
+
+    <div class="flex justify-center">
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        class="max-w-full h-auto"
+      >
+        <!-- Gradient definitions -->
+        <defs>
+          <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#19806f;stop-opacity:0.8"
+            ></stop>
+            <stop offset="100%" style="stop-color:#19806f;stop-opacity:0.4"
+            ></stop>
+          </linearGradient>
+          <linearGradient id="sht8Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.8"
+            ></stop>
+            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.4"
+            ></stop>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"
+            ></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="coloredBlur"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Income flows (left side) -->
+        {
+          (() => {
+            const allIncomeItems = [fromSht8, ...incomeWithoutSht8];
+            const minItemHeight = 30; // Minimum for text readability
+            const itemGap = 8;
+
+            // Calculate label positions based on proportional flow height + minimum
+            const labelPositions = [];
+            let currentLabelY = 64; // Start higher to avoid top edge
+
+            allIncomeItems.forEach((item, index) => {
+              const flowHeight = (item.amount / totalIncome) * logoHeight;
+              const itemHeight = Math.max(minItemHeight, flowHeight + 10); // Ensure enough space for text
+
+              labelPositions.push({
+                item,
+                flowHeight,
+                labelY: currentLabelY,
+                centerY: currentLabelY + itemHeight / 2,
+                itemHeight,
+              });
+              currentLabelY += itemHeight + itemGap;
+            });
+
+            // Calculate flow positions on the central box
+            let currentBoxY = centerY - logoHeight / 2;
+
+            return labelPositions.map(
+              ({ item, flowHeight, labelY, centerY: itemCenterY }, index) => {
+                const flowCenterY = currentBoxY + flowHeight / 2;
+                const startX = 200;
+                const endX = centerX - logoWidth / 2;
+                const isFromSht8 = item.label === "From Previous Event";
+
+                // Create filled path with constant width equal to flowHeight
+                const pathData = `
+              M ${startX} ${itemCenterY - flowHeight / 2}
+              C ${startX + 50} ${itemCenterY - flowHeight / 2} ${endX - 50} ${currentBoxY} ${endX} ${currentBoxY}
+              L ${endX} ${currentBoxY + flowHeight}
+              C ${endX - 50} ${currentBoxY + flowHeight} ${startX + 50} ${itemCenterY + flowHeight / 2} ${startX} ${itemCenterY + flowHeight / 2}
+              Z
+            `;
+
+                const result = (
+                  <g class="income-group">
+                    <text
+                      x="190"
+                      y={labelY + 12}
+                      class={`text-sm font-semibold text-end ${isFromSht8 ? "fill-purple-400" : "fill-white"}`}
+                      text-anchor="end"
+                    >
+                      {item.label}
+                    </text>
+                    <text
+                      x="190"
+                      y={labelY + 27}
+                      class={`text-xs text-end ${isFromSht8 ? "fill-purple-300" : "fill-gray-300"}`}
+                      text-anchor="end"
+                    >
+                      ฿
+                      {item.amount.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </text>
+
+                    <path
+                      d={pathData}
+                      fill={
+                        isFromSht8 ? "url(#sht8Gradient)" : "url(#flowGradient)"
+                      }
+                      opacity="0.8"
+                      class="hover:opacity-1 transition-opacity"
+                    />
+                  </g>
+                );
+
+                currentBoxY += flowHeight;
+                return result;
+              }
+            );
+          })()
+        }
+
+        <!-- Center box with manorah cappuccina -->
+        <rect
+          x={centerX - logoWidth / 2}
+          y={centerY - logoHeight / 2}
+          width={logoWidth}
+          height={logoHeight}
+          fill="#19806f"
+          filter="url(#glow)"></rect>
+        <image
+          href={manorahCappuccina}
+          x={centerX - logoWidth / 2}
+          y={centerY - logoHeight / 2}
+          width={logoWidth}
+          height={logoHeight}
+          style="object-fit: cover;"
+        />
+
+        <!-- Expense flows (right side) -->
+        {
+          (() => {
+            const allExpenseItems = [
+              ...sortedExpenses,
+              { label: "For Future Events", amount: leftover },
+            ];
+            const minItemHeight = 30; // Minimum for text readability
+            const itemGap = 8;
+
+            // Calculate label positions based on proportional flow height + minimum
+            const labelPositions = [];
+            let currentLabelY = 64; // Start higher to avoid top edge
+
+            allExpenseItems.forEach((item, index) => {
+              const totalAmount = totalExpenses + leftover;
+              const flowHeight = (item.amount / totalAmount) * logoHeight;
+              const itemHeight = Math.max(minItemHeight, flowHeight + 10); // Ensure enough space for text
+
+              labelPositions.push({
+                item,
+                flowHeight,
+                labelY: currentLabelY,
+                centerY: currentLabelY + itemHeight / 2,
+                itemHeight,
+              });
+              currentLabelY += itemHeight + itemGap;
+            });
+
+            // Calculate flow positions on the central box
+            let currentBoxY = centerY - logoHeight / 2;
+
+            return labelPositions.map(
+              ({ item, flowHeight, labelY, centerY: itemCenterY }, index) => {
+                const isLeftover = item.label === "For Future Events";
+                const startX = centerX + logoWidth / 2;
+                const endX = width - 200;
+
+                // Create filled path with constant width equal to flowHeight
+                const pathData = `
+              M ${startX} ${currentBoxY}
+              C ${startX + 50} ${currentBoxY} ${endX - 50} ${itemCenterY - flowHeight / 2} ${endX} ${itemCenterY - flowHeight / 2}
+              L ${endX} ${itemCenterY + flowHeight / 2}
+              C ${endX - 50} ${itemCenterY + flowHeight / 2} ${startX + 50} ${currentBoxY + flowHeight} ${startX} ${currentBoxY + flowHeight}
+              Z
+            `;
+
+                const result = (
+                  <g class={isLeftover ? "leftover-group" : "expense-group"}>
+                    <text
+                      x={endX + 10}
+                      y={labelY + 12}
+                      class={`text-sm font-semibold ${isLeftover ? "fill-green-400" : "fill-white"}`}
+                    >
+                      {item.label}
+                    </text>
+                    <text
+                      x={endX + 10}
+                      y={labelY + 27}
+                      class={`text-xs ${isLeftover ? "fill-green-300" : "fill-gray-300"}`}
+                    >
+                      ฿
+                      {item.amount.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </text>
+
+                    <path
+                      d={pathData}
+                      fill={isLeftover ? "#10b981" : "url(#flowGradient)"}
+                      opacity="0.8"
+                      class="hover:opacity-1 transition-opacity"
+                    />
+                  </g>
+                );
+
+                currentBoxY += flowHeight;
+                return result;
+              }
+            );
+          })()
+        }
+
+        <!-- Total labels -->
+        <text
+          x="200"
+          y="30"
+          class="text-xs fill-gray-400 text-end"
+          text-anchor="end"
+        >
+          Total Income: ฿{
+            totalIncome.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })
+          }
+        </text>
+        <text x={width - 200} y="30" class="text-xs fill-gray-400">
+          Total Expenses: ฿{
+            totalExpenses.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })
+          }
+        </text>
+      </svg>
+    </div>
+
+    <div class="text-center mt-8">
+      <p class="text-gray-300 text-sm max-w-2xl mx-auto">
+        This Sankey diagram shows the flow of funds for Stupido Hackettino ๙.
+        Income sources on the left flow through our event operations to expenses
+        on the right, with the remaining budget carrying forward to future
+        Creatorsgarten events.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .income-group:hover text,
+  .expense-group:hover text,
+  .leftover-group:hover text {
+    fill: #19806f;
+  }
+
+  svg text {
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    svg {
+      font-size: 12px;
+    }
+  }
+</style>
