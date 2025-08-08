@@ -81,7 +81,7 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
     </h2>
 
     <div
-      class="inline-block text-white px-6 py-3 rounded-lg mb-12 text-xl md:text-2xl font-medium transform -rotate-2 bg-[#19806f] scroll-animate bounce-up stagger-1 mx-auto block text-center"
+      class="text-white px-6 py-3 rounded-lg mb-12 text-xl md:text-2xl font-medium transform -rotate-2 bg-[#19806f] scroll-animate bounce-up stagger-1 mx-auto block text-center"
       style="font-family: 'K2D', sans-serif;"
     >
       ผลงานแห่งความเพี้ยน 🎨
@@ -124,7 +124,8 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
                     <a
                       href={`#${team.slug}`}
                       title="Copy permalink"
-                      class="copy-permalink-link text-gray-500 hover:text-white transition-all opacity-0 group-hover:opacity-100"
+                      aria-label="Copy permalink"
+                      class="copy-permalink-button text-gray-500 hover:text-white transition-all opacity-0 group-hover:opacity-100"
                       data-slug={team.slug}
                     >
                       <iconify-icon icon="mdi:link-variant" class="text-lg"></iconify-icon>
@@ -217,13 +218,37 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
     copyButtons.forEach(button => {
       button.addEventListener('click', async (e) => {
         e.preventDefault();
+        const button = e.currentTarget;
+        if (!(button instanceof HTMLElement)) return;
+
         const slug = button.dataset.slug;
         if (!slug) return;
 
         const url = `${window.location.href.split('#')[0]}#${slug}`;
 
         try {
-          await navigator.clipboard.writeText(url);
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(url);
+          } else {
+            const textarea = document.createElement('textarea');
+            textarea.value = url;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            const selection = document.getSelection();
+            const selected = selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+            textarea.select();
+            try {
+              document.execCommand('copy');
+            } finally {
+              document.body.removeChild(textarea);
+              if (selected && selection) {
+                selection.removeAllRanges();
+                selection.addRange(selected);
+              }
+            }
+          }
 
           // Provide visual feedback
           const icon = button.querySelector('iconify-icon');
@@ -231,15 +256,18 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
             const originalIcon = icon.getAttribute('icon');
             icon.setAttribute('icon', 'mdi:check');
             button.setAttribute('title', 'Copied!');
+            button.setAttribute('aria-label', 'Copied!');
 
             setTimeout(() => {
-              icon.setAttribute('icon', originalIcon);
+              icon.setAttribute('icon', originalIcon || 'mdi:link-variant');
               button.setAttribute('title', 'Copy permalink');
+              button.setAttribute('aria-label', 'Copy permalink');
             }, 1500);
           }
         } catch (err) {
           console.error('Failed to copy: ', err);
           button.setAttribute('title', 'Failed to copy');
+          button.setAttribute('aria-label', 'Failed to copy');
         }
       });
     });
