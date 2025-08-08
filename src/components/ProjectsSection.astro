@@ -8,17 +8,19 @@ function extractImageUrl(imageMarkdown: string): string {
 }
 
 // Function to parse links from markdown format [Label](url)
-function parseLinks(linksMarkdown: string): Array<{label: string, url: string, icon: string}> {
+function parseLinks(
+  linksMarkdown: string
+): Array<{ label: string; url: string; icon: string }> {
   if (!linksMarkdown.trim()) return [];
-  
+
   const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
-  const links: Array<{label: string, url: string, icon: string}> = [];
+  const links: Array<{ label: string; url: string; icon: string }> = [];
   let match;
-  
+
   while ((match = linkPattern.exec(linksMarkdown)) !== null) {
     const label = match[1];
     const url = match[2];
-    
+
     // Map link types to icons
     let icon = "mdi:link"; // default
     if (label.toLowerCase().includes("github")) {
@@ -30,44 +32,49 @@ function parseLinks(linksMarkdown: string): Array<{label: string, url: string, i
     } else if (label.toLowerCase().includes("slides")) {
       icon = "mdi:presentation";
     }
-    
+
     links.push({ label, url, icon });
   }
-  
+
   return links;
 }
 
 // Function to parse team members from mixed markdown/plain text format
-function parseMembers(membersString: string): Array<{name: string, url?: string, icon: string}> {
+function parseMembers(
+  membersString: string
+): Array<{ name: string; url?: string; icon: string }> {
   if (!membersString.trim()) return [];
-  
-  const memberLines = membersString.split('\n').map(line => line.trim()).filter(line => line);
-  const members: Array<{name: string, url?: string, icon: string}> = [];
-  
-  memberLines.forEach(line => {
+
+  const memberLines = membersString
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line);
+  const members: Array<{ name: string; url?: string; icon: string }> = [];
+
+  memberLines.forEach((line) => {
     // Check if line contains markdown link [Name](URL)
     const linkMatch = line.match(/\[([^\]]+)\]\(([^)]+)\)/);
     if (linkMatch) {
       const name = linkMatch[1];
       const url = linkMatch[2];
-      
+
       // Map URL types to icons
       let icon = "mdi:account-circle"; // default for linked members
-      if (url.includes('github.com')) {
+      if (url.includes("github.com")) {
         icon = "mdi:github";
-      } else if (url.includes('linkedin.com')) {
+      } else if (url.includes("linkedin.com")) {
         icon = "mdi:linkedin";
-      } else if (url.includes('twitter.com') || url.includes('x.com')) {
+      } else if (url.includes("twitter.com") || url.includes("x.com")) {
         icon = "mdi:twitter";
       }
-      
+
       members.push({ name, url, icon });
     } else {
       // Plain text member name
       members.push({ name: line, icon: "mdi:account" });
     }
   });
-  
+
   return members;
 }
 ---
@@ -93,7 +100,7 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
           const imageUrl = extractImageUrl(team.project.image);
           const links = parseLinks(team.project.links);
           const members = parseMembers(team.members);
-          
+
           return (
             <div
               id={team.slug}
@@ -109,7 +116,7 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
                   />
                 </div>
               )}
-              
+
               {/* Content */}
               <div class="p-6">
                 {/* Project Name & Team */}
@@ -128,17 +135,17 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
                       class="copy-permalink-button text-gray-500 hover:text-white transition-all opacity-0 group-hover:opacity-100"
                       data-slug={team.slug}
                     >
-                      <iconify-icon icon="mdi:link-variant" class="text-lg"></iconify-icon>
+                      <iconify-icon icon="mdi:link-variant" class="text-lg" />
                     </a>
                   </div>
                   <p class="text-[#19806f] font-medium text-sm mb-3">
                     by {team.name}
                   </p>
-                  
+
                   {/* Team Members */}
                   {members.length > 0 && (
                     <div class="flex flex-wrap gap-2 mb-3">
-                      {members.map((member) => (
+                      {members.map((member) =>
                         member.url ? (
                           <a
                             href={member.url}
@@ -146,26 +153,25 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
                             rel="noopener noreferrer"
                             class="inline-flex items-center gap-1.5 px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white text-xs rounded-md transition-colors"
                           >
-                            <iconify-icon icon={member.icon} class="text-sm"></iconify-icon>
+                            <iconify-icon icon={member.icon} class="text-sm" />
                             {member.name}
                           </a>
                         ) : (
                           <span class="inline-flex items-center gap-1.5 px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded-md">
-                            <iconify-icon icon={member.icon} class="text-sm"></iconify-icon>
+                            <iconify-icon icon={member.icon} class="text-sm" />
                             {member.name}
                           </span>
                         )
-                      ))}
+                      )}
                     </div>
                   )}
                 </div>
 
                 {/* Description */}
                 <p class="text-gray-300 leading-relaxed mb-4 text-sm">
-                  {team.project.description.length > 200 
-                    ? team.project.description.substring(0, 200) + "..." 
-                    : team.project.description
-                  }
+                  {team.project.description.length > 200
+                    ? team.project.description.substring(0, 200) + "..."
+                    : team.project.description}
                 </p>
 
                 {/* Links */}
@@ -178,7 +184,7 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
                         rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-3 py-2 bg-gray-800 hover:bg-[#19806f] text-white text-sm rounded-lg transition-colors"
                       >
-                        <iconify-icon icon={link.icon} class="text-lg"></iconify-icon>
+                        <iconify-icon icon={link.icon} class="text-lg" />
                         {link.label}
                       </a>
                     ))}
@@ -188,12 +194,15 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
                 {/* Manorah Commentary */}
                 <div class="border-t border-gray-800 pt-4 mt-4">
                   <div class="flex items-start gap-3">
-                    <iconify-icon 
-                      icon="mdi:drama-masks" 
+                    <iconify-icon
+                      icon="mdi:drama-masks"
                       class="text-[#19806f] text-xl mt-1 flex-shrink-0"
-                    ></iconify-icon>
+                    />
                     <div>
-                      <h4 class="text-[#19806f] font-semibold text-sm mb-2" style="font-family: 'K2D', sans-serif;">
+                      <h4
+                        class="text-[#19806f] font-semibold text-sm mb-2"
+                        style="font-family: 'K2D', sans-serif;"
+                      >
                         มโนราห์ว่าไง
                       </h4>
                       <p class="text-gray-300 text-sm leading-relaxed italic">
@@ -212,11 +221,11 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const copyButtons = document.querySelectorAll('.copy-permalink-button');
+  document.addEventListener("DOMContentLoaded", () => {
+    const copyButtons = document.querySelectorAll(".copy-permalink-button");
 
-    copyButtons.forEach(button => {
-      button.addEventListener('click', async (e) => {
+    copyButtons.forEach((button) => {
+      button.addEventListener("click", async (e) => {
         e.preventDefault();
         const button = e.currentTarget;
         if (!(button instanceof HTMLElement)) return;
@@ -224,23 +233,26 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
         const slug = button.dataset.slug;
         if (!slug) return;
 
-        const url = `${window.location.href.split('#')[0]}#${slug}`;
+        const url = `${window.location.href.split("#")[0]}#${slug}`;
 
         try {
           if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(url);
           } else {
-            const textarea = document.createElement('textarea');
+            const textarea = document.createElement("textarea");
             textarea.value = url;
-            textarea.setAttribute('readonly', '');
-            textarea.style.position = 'absolute';
-            textarea.style.left = '-9999px';
+            textarea.setAttribute("readonly", "");
+            textarea.style.position = "absolute";
+            textarea.style.left = "-9999px";
             document.body.appendChild(textarea);
             const selection = document.getSelection();
-            const selected = selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+            const selected =
+              selection && selection.rangeCount > 0
+                ? selection.getRangeAt(0)
+                : null;
             textarea.select();
             try {
-              document.execCommand('copy');
+              document.execCommand("copy");
             } finally {
               document.body.removeChild(textarea);
               if (selected && selection) {
@@ -251,23 +263,23 @@ function parseMembers(membersString: string): Array<{name: string, url?: string,
           }
 
           // Provide visual feedback
-          const icon = button.querySelector('iconify-icon');
+          const icon = button.querySelector("iconify-icon");
           if (icon) {
-            const originalIcon = icon.getAttribute('icon');
-            icon.setAttribute('icon', 'mdi:check');
-            button.setAttribute('title', 'Copied!');
-            button.setAttribute('aria-label', 'Copied!');
+            const originalIcon = icon.getAttribute("icon");
+            icon.setAttribute("icon", "mdi:check");
+            button.setAttribute("title", "Copied!");
+            button.setAttribute("aria-label", "Copied!");
 
             setTimeout(() => {
-              icon.setAttribute('icon', originalIcon || 'mdi:link-variant');
-              button.setAttribute('title', 'Copy permalink');
-              button.setAttribute('aria-label', 'Copy permalink');
+              icon.setAttribute("icon", originalIcon || "mdi:link-variant");
+              button.setAttribute("title", "Copy permalink");
+              button.setAttribute("aria-label", "Copy permalink");
             }, 1500);
           }
         } catch (err) {
-          console.error('Failed to copy: ', err);
-          button.setAttribute('title', 'Failed to copy');
-          button.setAttribute('aria-label', 'Failed to copy');
+          console.error("Failed to copy: ", err);
+          button.setAttribute("title", "Failed to copy");
+          button.setAttribute("aria-label", "Failed to copy");
         }
       });
     });
